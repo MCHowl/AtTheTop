@@ -227,7 +227,7 @@ MonoBehaviour:
   - {fileID: 1946573894551316, guid: 7582065a37fb8844290d4064244bda9a, type: 2}
   separatorLength: 8.6
   roomLength: 19.2
-  scale: 1
+  scale: 1.07
   roomOrder: 0000000000000000
 --- !u!1 &534669902
 GameObject:
