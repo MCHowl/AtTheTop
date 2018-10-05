@@ -26,8 +26,10 @@ public class ScreenFade : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        StartCoroutine(FadeToBlack());
+    private void OnCollisionEnter(Collision collision) {
+        if (isFadeToBlack) {
+            StartCoroutine(FadeToBlack());
+        }
     }
 
     void setAlpha(float newAlpha) {
@@ -42,6 +44,7 @@ public class ScreenFade : MonoBehaviour {
             yield return null;
         }
 
+        isFadeToBlack = true;
         yield return null;
     }
 
@@ -53,6 +56,7 @@ public class ScreenFade : MonoBehaviour {
             yield return null;
         }
 
+        isFadeToBlack = false;
         yield return null;
     }
 }

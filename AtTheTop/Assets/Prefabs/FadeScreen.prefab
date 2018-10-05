@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4841953944889920}
   - component: {fileID: 212479617968209752}
   - component: {fileID: 114899887522045644}
+  - component: {fileID: 65998921309199216}
   m_Layer: 0
   m_Name: FadeScreen
   m_TagString: Untagged
@@ -34,13 +35,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233329904105806}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.08, y: 1.08, z: 1.08}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65998921309199216
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233329904105806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.19999999}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114899887522045644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444463c413a06e14bae3883610bb13d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFadeToBlack: 0
+  isFadeToBlack: 1
   fadeTime: 2
 --- !u!212 &212479617968209752
 SpriteRenderer:
