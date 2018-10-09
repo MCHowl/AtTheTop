@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ScreenFade : MonoBehaviour {
 
+    public delegate void DayEnd();
+    public static event DayEnd DayEndEvent;
+
     [SerializeField]
     bool isFadeToBlack;
 
@@ -63,6 +66,7 @@ public class ScreenFade : MonoBehaviour {
         }
 
         isFadeToBlack = false;
+        DayEndEvent();
         yield return null;
     }
 }

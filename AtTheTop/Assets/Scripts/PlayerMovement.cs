@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     [SerializeField]
-    float moveDistance = 1;
+    float moveDistance = 10;
 
     [SerializeField]
     float walkTime = 0.25f;
