@@ -11,9 +11,13 @@ public class ScreenFade : MonoBehaviour {
     float fadeTime;
 
     SpriteRenderer sprite;
+    GameController gameController;
 
 	void Start () {
         sprite = GetComponent<SpriteRenderer>();
+
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        Debug.Assert(gameController != null);
 
         if (isFadeToBlack) {
             setAlpha(0);
@@ -45,11 +49,13 @@ public class ScreenFade : MonoBehaviour {
         }
 
         isFadeToBlack = true;
+        gameController.Paused = false;
         yield return null;
     }
 
-    IEnumerator FadeToBlack()
-    {
+    IEnumerator FadeToBlack() {
+        gameController.Paused = true;
+
         while (sprite.color.a < 1)
         {
             setAlpha(sprite.color.a + Time.deltaTime / fadeTime);

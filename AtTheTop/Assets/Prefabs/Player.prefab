@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4092900530111916}
   - component: {fileID: 212687289714570528}
-  - component: {fileID: 114592698856429140}
+  - component: {fileID: 54023593045221002}
   - component: {fileID: 65597160261520972}
-  - component: {fileID: 54853588959819406}
+  - component: {fileID: 95821888819598190}
+  - component: {fileID: 114592698856429140}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -43,7 +44,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54853588959819406
+--- !u!54 &54023593045221002
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,6 +71,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.54, y: 3.54, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95821888819598190
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089834278262256}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 80de6ab803ee4fd4280c5248ec8be898, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114592698856429140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25d7b7f8fc97054886c9ed56a4cd3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  moveDistance: 1
+  walkTime: 0.25
 --- !u!212 &212687289714570528
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -117,9 +137,9 @@ SpriteRenderer:
   m_SortingLayerID: 776555553
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 465b104f70f0a4e4686ba5ca6c4adfb6, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 045620f022277014197f7ab185bb220c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3.54, y: 3.54}
