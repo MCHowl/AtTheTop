@@ -9,14 +9,15 @@ public class CameraMovement : MonoBehaviour {
 
     GameObject playerInstance;
 
-    Vector3 offset;
+    Vector3 cameraPosition;
 
     void Start() {
         playerInstance = Instantiate(player);
-        offset = transform.position - player.transform.position;
+        cameraPosition = new Vector3(0f, 0f, -10f);
     }
 
     void LateUpdate () {
-        transform.position = playerInstance.transform.position + offset;
+        cameraPosition.x = playerInstance.transform.position.x;
+        transform.position = cameraPosition;
 	}
 }
