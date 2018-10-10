@@ -31,9 +31,21 @@ public class ButtonController : MonoBehaviour {
         SceneManager.LoadScene(sceneNumber);
     }
 
+    public void StartGame() {
+        if (PlayerPrefs.GetInt("character") == 0) {
+            ShowCanvas();
+        } else {
+            LoadLevel(1);
+        }
+    }
+
     public void ResetData() {
         PlayerPrefs.DeleteAll();
     }
 
-
+    public void SetCharacter(int i) {
+        PlayerPrefs.SetInt("character", i);
+        PlayerPrefs.Save();
+        StartGame();
+    }
 }

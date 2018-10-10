@@ -27,8 +27,7 @@ public class PlayerMovement : MonoBehaviour {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent <GameController>();
         Debug.Assert(gameController != null);
 
-        switch(PlayerPrefs.GetInt("character"))
-        {
+        switch(PlayerPrefs.GetInt("character")) {
             case (1):
                 animator.runtimeAnimatorController = animatorControllers[0] as RuntimeAnimatorController;
                 break;
@@ -46,16 +45,6 @@ public class PlayerMovement : MonoBehaviour {
                 nextWalkTime = Time.time + walkTime;
                 StartCoroutine(WalkAnimation(0.25f));
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            animator.runtimeAnimatorController = animatorControllers[0] as RuntimeAnimatorController;
-            PlayerPrefs.SetInt("character", 1);
-            PlayerPrefs.Save();
-        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            animator.runtimeAnimatorController = animatorControllers[1] as RuntimeAnimatorController;
-            PlayerPrefs.SetInt("character", 2);
-            PlayerPrefs.Save();
         }
     }
 
