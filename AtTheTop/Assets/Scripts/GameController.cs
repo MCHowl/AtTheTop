@@ -32,7 +32,6 @@ public class GameController : MonoBehaviour {
 
     // Game Management
     public void RestartDay() {
-        print("Hi");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

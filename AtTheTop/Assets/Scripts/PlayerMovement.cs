@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -9,6 +10,10 @@ public class PlayerMovement : MonoBehaviour {
 
     [SerializeField]
     float walkTime = 0.25f;
+
+    [SerializeField]
+    RuntimeAnimatorController[] animatorControllers;
+
     float nextWalkTime = 0;
 
     Animator animator;
@@ -21,6 +26,18 @@ public class PlayerMovement : MonoBehaviour {
 
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent <GameController>();
         Debug.Assert(gameController != null);
+
+        switch(PlayerPrefs.GetInt("character"))
+        {
+            case (1):
+                animator.runtimeAnimatorController = animatorControllers[0] as RuntimeAnimatorController;
+                break;
+            case (2):
+                animator.runtimeAnimatorController = animatorControllers[1] as RuntimeAnimatorController;
+                break;
+            default:
+                break;
+        }
     }
 
     void Update() {
@@ -29,6 +46,16 @@ public class PlayerMovement : MonoBehaviour {
                 nextWalkTime = Time.time + walkTime;
                 StartCoroutine(WalkAnimation(0.25f));
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            animator.runtimeAnimatorController = animatorControllers[0] as RuntimeAnimatorController;
+            PlayerPrefs.SetInt("character", 1);
+            PlayerPrefs.Save();
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            animator.runtimeAnimatorController = animatorControllers[1] as RuntimeAnimatorController;
+            PlayerPrefs.SetInt("character", 2);
+            PlayerPrefs.Save();
         }
     }
 
