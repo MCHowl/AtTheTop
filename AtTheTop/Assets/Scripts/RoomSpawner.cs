@@ -8,7 +8,7 @@ public class RoomSpawner : MonoBehaviour {
     KeyCode spawnKey;
 
     [SerializeField]
-    GameObject separator, startRoom, endRoom;
+    GameObject separator, startRoom, officeRoom;
 
     [SerializeField]
     GameObject[] rooms;
@@ -47,8 +47,16 @@ public class RoomSpawner : MonoBehaviour {
             SpawnRoom(rooms[i]);
         }
 
+        // spawn office
+        SpawnRoom(officeRoom);
+
+        // inversely spawn sandwich rooms
+        for (int i = roomOrder.Length - 1; i >= 0; i--) {
+            SpawnRoom(rooms[roomOrder[i]]);
+        }
+
         // spawn last room
-        SpawnRoom(endRoom);
+        SpawnRoom(startRoom);
     }
 
     void SpawnRoom(GameObject room) {

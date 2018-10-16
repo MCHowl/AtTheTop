@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     RuntimeAnimatorController[] animatorControllers;
 
     float nextWalkTime = 0;
+    float nextAutoWalkTime = 0;
 
     Animator animator;
     Rigidbody rb;
@@ -44,6 +45,25 @@ public class PlayerMovement : MonoBehaviour {
             if (Time.time >= nextWalkTime) {
                 nextWalkTime = Time.time + walkTime;
                 StartCoroutine(WalkAnimation(0.25f));
+            }
+        }
+
+        if (GameData.Upgrade1Level != 0 && Time.time >= nextAutoWalkTime) {
+            switch (GameData.Upgrade1Level) {
+                case (1):
+                    nextAutoWalkTime = Time.time + 1f;
+                    StartCoroutine(WalkAnimation(0.25f));
+                    break;
+                case (2):
+                    nextAutoWalkTime = Time.time + 0.5f;
+                    StartCoroutine(WalkAnimation(0.25f));
+                    break;
+                case (3):
+                    nextAutoWalkTime = Time.time + 0.25f;
+                    StartCoroutine(WalkAnimation(0.25f));
+                    break;
+                default:
+                    break;
             }
         }
     }

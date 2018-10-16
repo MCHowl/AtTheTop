@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
+    public TMPro.TextMeshProUGUI energyText;
+    public TMPro.TextMeshProUGUI moneyText;
+
     bool isInGame = false;
-    bool isPaused = true;
 
     // Properties
     public bool InGame {
@@ -15,23 +17,30 @@ public class GameController : MonoBehaviour {
         set { isInGame = value; }
     }
 
-    public bool Paused {
-        get { return isPaused; }
-        set { isPaused = value; }
-    }
+    public bool Paused { get; set; }
 
     // Listeners
     private void OnEnable() {
         ScreenFade.DayEndEvent += RestartDay;
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         ScreenFade.DayEndEvent -= RestartDay;
     }
 
     // Game Management
+    private void Start() {
+        Paused = true;
+        GameData.LoadPlayerData();
+    }
+
+    private void LateUpdate() {
+        moneyText.text = "Money: $" + GameData.CurrentMoney;
+        energyText.text = "Energy: " + GameData.CurrentEnergy + "/" + GameData.MaxEnergy;
+    }
+
     public void RestartDay() {
+        GameData.SavePlayerData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
