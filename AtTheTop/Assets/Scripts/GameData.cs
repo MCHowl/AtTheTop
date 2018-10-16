@@ -19,7 +19,7 @@ public class GameData : MonoBehaviour {
 
     // Functions
     public static void LoadPlayerData() {
-        MaxEnergy = PlayerPrefs.GetInt("maxEnergy", 100);
+        MaxEnergy = PlayerPrefs.GetInt("maxEnergy", 250);
         CurrentEnergy = PlayerPrefs.GetInt("currentEnergy", MaxEnergy);
 
         CurrentMoney = PlayerPrefs.GetInt("currentMoney");

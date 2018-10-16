@@ -19,14 +19,10 @@ public class PlayerMovement : MonoBehaviour {
 
     Animator animator;
     Rigidbody rb;
-    GameController gameController;
 
     private void Start() {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent <GameController>();
-        Debug.Assert(gameController != null);
 
         switch(PlayerPrefs.GetInt("character")) {
             case (1):
@@ -41,30 +37,45 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !gameController.Paused) {
-            if (Time.time >= nextWalkTime) {
-                nextWalkTime = Time.time + walkTime;
-                StartCoroutine(WalkAnimation(0.25f));
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !GameController.Paused) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.collider.CompareTag("Player") && Time.time >= nextWalkTime) {
+                    PlayerAction();
+                    nextWalkTime = Time.time + walkTime;
+                }
             }
         }
 
-        if (GameData.Upgrade1Level != 0 && Time.time >= nextAutoWalkTime) {
+        if (Time.time >= nextAutoWalkTime && GameData.Upgrade1Level != 0) {
+            PlayerAction();
+
             switch (GameData.Upgrade1Level) {
                 case (1):
                     nextAutoWalkTime = Time.time + 1f;
-                    StartCoroutine(WalkAnimation(0.25f));
                     break;
                 case (2):
                     nextAutoWalkTime = Time.time + 0.5f;
-                    StartCoroutine(WalkAnimation(0.25f));
                     break;
                 case (3):
                     nextAutoWalkTime = Time.time + 0.25f;
-                    StartCoroutine(WalkAnimation(0.25f));
                     break;
                 default:
+                    Debug.LogWarning("Upgrade level too high");
                     break;
             }
+        }
+    }
+
+    private void PlayerAction() {
+        GameData.CurrentEnergy = Mathf.Max(0, GameData.CurrentEnergy - 1);
+
+        if (GameController.InOffice) {
+            GameData.CurrentMoney += 1;
+        } else {
+            StartCoroutine(WalkAnimation(0.25f));
         }
     }
 
