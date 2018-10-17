@@ -13,7 +13,11 @@ public class EventTrigger : MonoBehaviour {
     EventController eventController;
     EventController.Event newEvent;
 
+    public bool triggered { get; set; }
+
     void Start() {
+        triggered = false;
+
         eventController = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventController>();
         newEvent = new EventController.Event(EventText, EnergyChange, MoneyChange);
 
@@ -22,8 +26,9 @@ public class EventTrigger : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (GameData.CurrentDay == TriggerDay) {
+    private void OnTriggerEnter(Collider other) {
+        if (GameData.CurrentDay == TriggerDay && !triggered) {
+            triggered = true;
             eventController.TriggerEvent(newEvent);
         }
     }

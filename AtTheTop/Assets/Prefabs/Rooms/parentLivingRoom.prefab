@@ -168,7 +168,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448750997803172}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.3, z: 1}
@@ -186,8 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerDay: 1
   EventText: Eat something your parents left out for you?
-  EnergyChange: 1
-  MoneyChange: -1
+  EnergyChange: 0
+  MoneyChange: 0
   VisibleWhenInactive: 0
 --- !u!212 &212447334453877444
 SpriteRenderer:

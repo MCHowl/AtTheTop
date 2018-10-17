@@ -17,16 +17,19 @@ public class EventController : MonoBehaviour {
 
     public GameObject EventUi;
     public TMPro.TextMeshProUGUI EventUiText;
+    public GameObject ExhaustionUi;
 
     Event currentEvent;
 
 	void Start() {
         EventUi.SetActive(false);
+        ExhaustionUi.SetActive(false);
 	}
 	
 	void Update() {
-		if (GameData.CurrentEnergy <= 100 && GameController.InOffice) {
-            print("You feel exhausted. Time to go home.");
+		if (GameData.CurrentEnergy <= 90 && GameController.InOffice) {
+            //print("You feel exhausted. Time to go home.");
+            StartCoroutine(ExhaustionEvent());
             GameController.InOffice = false;
         }
 	}
@@ -63,5 +66,11 @@ public class EventController : MonoBehaviour {
     public void DeclineEvent() {
         EventUi.SetActive(false);
         GameController.Paused = false;
+    }
+
+    IEnumerator ExhaustionEvent() {
+        ExhaustionUi.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        ExhaustionUi.SetActive(false);
     }
 }

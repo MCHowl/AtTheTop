@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class EnterWorkCollider : MonoBehaviour {
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Player")) {
+    bool triggered { get; set; }
+
+    void Start() {
+        triggered = false;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (!triggered) {
+            triggered = true;
             GameController.InOffice = true;
         }
     }

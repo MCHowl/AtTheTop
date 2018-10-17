@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour {
                 }
             }
         } else {
-            StopAllCoroutines();
+            //StopCoroutine("WalkAnimation");
             animator.SetBool("isPlayerWalking", false);
         }
     }
@@ -81,7 +81,11 @@ public class PlayerMovement : MonoBehaviour {
 
         if (GameController.InOffice) {
             GameData.CurrentMoney += 1;
+            TaskController.WorkDone += 1;
+            //StopCoroutine("WalkAnimation");
+            animator.SetBool("isPlayerWalking", false);
         } else {
+            //StopCoroutine("WalkAnimation");
             StartCoroutine(WalkAnimation(0.25f));
         }
     }
@@ -92,8 +96,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 end = transform.position + transform.right * moveDistance;
         float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
 
-        while (sqrRemainingDistance > float.Epsilon)
-        {
+        while (sqrRemainingDistance > float.Epsilon) {
             Vector3 newPosition = Vector3.MoveTowards(rb.position, end, Time.deltaTime / walkTime);
             rb.MovePosition(newPosition);
             sqrRemainingDistance = (transform.position - end).sqrMagnitude;
