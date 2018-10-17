@@ -37,35 +37,42 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !GameController.Paused) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        if (!GameController.Paused) {
+            // Manual Clicks
+            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.CompareTag("Player") && Time.time >= nextWalkTime) {
-                    PlayerAction();
-                    nextWalkTime = Time.time + walkTime;
+                if (Physics.Raycast(ray, out hit)) {
+                    if (hit.collider.CompareTag("Player") && Time.time >= nextWalkTime) {
+                        PlayerAction();
+                        nextWalkTime = Time.time + walkTime;
+                    }
                 }
             }
-        }
 
-        if (Time.time >= nextAutoWalkTime && GameData.Upgrade1Level != 0) {
-            PlayerAction();
+            //Auto Clicks
+            if (Time.time >= nextAutoWalkTime && GameData.Upgrade1Level != 0) {
+                PlayerAction();
 
-            switch (GameData.Upgrade1Level) {
-                case (1):
-                    nextAutoWalkTime = Time.time + 1f;
-                    break;
-                case (2):
-                    nextAutoWalkTime = Time.time + 0.5f;
-                    break;
-                case (3):
-                    nextAutoWalkTime = Time.time + 0.25f;
-                    break;
-                default:
-                    Debug.LogWarning("Upgrade level too high");
-                    break;
+                switch (GameData.Upgrade1Level) {
+                    case (1):
+                        nextAutoWalkTime = Time.time + 1f;
+                        break;
+                    case (2):
+                        nextAutoWalkTime = Time.time + 0.5f;
+                        break;
+                    case (3):
+                        nextAutoWalkTime = Time.time + 0.25f;
+                        break;
+                    default:
+                        Debug.LogWarning("Upgrade level too high");
+                        break;
+                }
             }
+        } else {
+            StopAllCoroutines();
+            animator.SetBool("isPlayerWalking", false);
         }
     }
 

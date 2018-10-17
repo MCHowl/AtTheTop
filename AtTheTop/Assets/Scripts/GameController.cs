@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour {
         Paused = true;
         InOffice = false;
         GameData.LoadPlayerData();
+
+        print("Current Day: " + GameData.CurrentDay);
     }
 
     private void LateUpdate() {
