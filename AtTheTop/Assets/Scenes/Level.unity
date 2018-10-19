@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 60864329}
   - component: {fileID: 60864328}
   - component: {fileID: 60864327}
+  - component: {fileID: 60864330}
   m_Layer: 5
   m_Name: Upgrade 3 Button
   m_TagString: Untagged
@@ -188,7 +189,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 60864328}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 60864330}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &60864328
@@ -225,6 +237,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 60864325}
   m_CullTransparentMesh: 0
+--- !u!114 &60864330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 60864325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff25349df8274b04785b4ff04b53306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeNumber: 3
+  Level1Cost: 250
+  Level2Cost: 350
+  Level3Cost: 450
+  Level1ActiveDay: 7
+  Level2ActiveDay: 11
+  Level3ActiveDay: 17
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,6 +1727,7 @@ GameObject:
   - component: {fileID: 1201677648}
   - component: {fileID: 1201677647}
   - component: {fileID: 1201677646}
+  - component: {fileID: 1201677649}
   m_Layer: 5
   m_Name: Upgrade 4 Button
   m_TagString: Untagged
@@ -1761,7 +1792,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1201677647}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1201677649}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1201677647
@@ -1798,6 +1840,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1201677644}
   m_CullTransparentMesh: 0
+--- !u!114 &1201677649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1201677644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff25349df8274b04785b4ff04b53306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeNumber: 4
+  Level1Cost: 300
+  Level2Cost: 500
+  Level3Cost: 700
+  Level1ActiveDay: 13
+  Level2ActiveDay: 21
+  Level3ActiveDay: 24
 --- !u!1 &1216665124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,6 +2032,7 @@ GameObject:
   - component: {fileID: 1372243952}
   - component: {fileID: 1372243951}
   - component: {fileID: 1372243950}
+  - component: {fileID: 1372243953}
   m_Layer: 5
   m_Name: Upgrade 1 Button
   m_TagString: Untagged
@@ -2036,7 +2097,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1372243951}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1372243953}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1372243951
@@ -2073,6 +2145,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1372243948}
   m_CullTransparentMesh: 0
+--- !u!114 &1372243953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1372243948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff25349df8274b04785b4ff04b53306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeNumber: 1
+  Level1Cost: 100
+  Level2Cost: 200
+  Level3Cost: 300
+  Level1ActiveDay: 3
+  Level2ActiveDay: 8
+  Level3ActiveDay: 22
 --- !u!1 &1396716998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,6 +2804,7 @@ GameObject:
   - component: {fileID: 1753027029}
   - component: {fileID: 1753027028}
   - component: {fileID: 1753027027}
+  - component: {fileID: 1753027030}
   m_Layer: 5
   m_Name: Upgrade 2 Button
   m_TagString: Untagged
@@ -2778,7 +2869,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1753027028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1753027030}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1753027028
@@ -2815,6 +2917,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1753027025}
   m_CullTransparentMesh: 0
+--- !u!114 &1753027030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753027025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff25349df8274b04785b4ff04b53306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeNumber: 2
+  Level1Cost: 200
+  Level2Cost: 250
+  Level3Cost: 300
+  Level1ActiveDay: 5
+  Level2ActiveDay: 9
+  Level3ActiveDay: 15
 --- !u!1 &2024955215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,6 +3021,7 @@ GameObject:
   - component: {fileID: 2141861599}
   - component: {fileID: 2141861598}
   - component: {fileID: 2141861597}
+  - component: {fileID: 2141861600}
   m_Layer: 5
   m_Name: Upgrade 5 Button
   m_TagString: Untagged
@@ -2965,7 +3086,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2141861598}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2141861600}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2141861598
@@ -3002,3 +3134,21 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141861595}
   m_CullTransparentMesh: 0
+--- !u!114 &2141861600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2141861595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff25349df8274b04785b4ff04b53306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeNumber: 5
+  Level1Cost: 500
+  Level2Cost: 1000
+  Level3Cost: 2000
+  Level1ActiveDay: 20
+  Level2ActiveDay: 26
+  Level3ActiveDay: 28

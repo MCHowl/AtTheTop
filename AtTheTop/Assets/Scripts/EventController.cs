@@ -28,7 +28,6 @@ public class EventController : MonoBehaviour {
 	
 	void Update() {
 		if (GameData.CurrentEnergy <= 90 && GameController.InOffice) {
-            //print("You feel exhausted. Time to go home.");
             StartCoroutine(ExhaustionEvent());
             GameController.InOffice = false;
         }
