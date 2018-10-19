@@ -186,7 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerDay: 1
   EventText: Eat something your parents left out for you?
-  EnergyChange: 0
+  Type: 0
+  EnergyChange: 1
   MoneyChange: 0
   VisibleWhenInactive: 0
 --- !u!212 &212447334453877444

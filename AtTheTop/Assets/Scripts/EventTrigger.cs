@@ -6,6 +6,7 @@ public class EventTrigger : MonoBehaviour {
 
     public int TriggerDay;
     public string EventText;
+    public EventController.Event.EventType Type;
     public int EnergyChange, MoneyChange;
 
     public bool VisibleWhenInactive;
@@ -19,7 +20,7 @@ public class EventTrigger : MonoBehaviour {
         triggered = false;
 
         eventController = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventController>();
-        newEvent = new EventController.Event(EventText, EnergyChange, MoneyChange);
+        newEvent = new EventController.Event(EventText, Type, EnergyChange, MoneyChange);
 
         if (!VisibleWhenInactive && GameData.CurrentDay != TriggerDay) {
             this.gameObject.SetActive(false);
