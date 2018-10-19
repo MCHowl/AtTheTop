@@ -27,13 +27,17 @@ public class GameController : MonoBehaviour {
         Paused = true;
         InOffice = false;
         GameData.LoadPlayerData();
+        EventList.InitialiseWorkEventList();
+        EventList.InitialiseFriendEventList();
+        EventList.InitialiseParentEventList();
 
         print("Current Day: " + GameData.CurrentDay);
     }
 
     private void LateUpdate() {
         moneyText.text = "Money: $" + GameData.CurrentMoney;
-        energyText.text = "Energy: " + GameData.CurrentEnergy + "/" + GameData.MaxEnergy;
+        //energyText.text = "Energy: " + GameData.CurrentEnergy + "/" + GameData.MaxEnergy;
+        energyText.text = "Energy: " + GameData.CurrentEnergy / GameData.MaxEnergy * 100f + "%";
     }
 
     public void RestartDay() {

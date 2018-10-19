@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour {
     // Properties
-    public static int CurrentEnergy { get; set; }
-    public static int MaxEnergy { get; set; }
+    public static float CurrentEnergy { get; set; }
+    public static float MaxEnergy { get; set; }
 
-    public static int CurrentMoney { get; set; }
+    public static float CurrentMoney { get; set; }
 
     public static int CurrentDay { get; set; }
+
+    public static int FriendRelationshipLevel { get; set; }
+    public static int ParentRelationshipLevel { get; set; }
 
     public static int Upgrade1Level { get; set; }
     public static int Upgrade2Level { get; set; }
@@ -19,12 +22,15 @@ public class GameData : MonoBehaviour {
 
     // Functions
     public static void LoadPlayerData() {
-        MaxEnergy = PlayerPrefs.GetInt("maxEnergy", 250);
-        CurrentEnergy = PlayerPrefs.GetInt("currentEnergy", MaxEnergy);
+        MaxEnergy = PlayerPrefs.GetFloat("maxEnergy", 250);
+        CurrentEnergy = PlayerPrefs.GetFloat("currentEnergy", MaxEnergy);
 
-        CurrentMoney = PlayerPrefs.GetInt("currentMoney");
+        CurrentMoney = PlayerPrefs.GetFloat("currentMoney");
 
         CurrentDay = PlayerPrefs.GetInt("currentDay", 1);
+
+        FriendRelationshipLevel = PlayerPrefs.GetInt("friendlevel", 10);
+        ParentRelationshipLevel = PlayerPrefs.GetInt("parentlevel", 10);
 
         Upgrade1Level = PlayerPrefs.GetInt("upgrade1Level");
         Upgrade2Level = PlayerPrefs.GetInt("upgrade2Level");
@@ -34,12 +40,15 @@ public class GameData : MonoBehaviour {
     }
 
     public static void SavePlayerData() {
-        PlayerPrefs.SetInt("maxEnergy", MaxEnergy);
-        PlayerPrefs.SetInt("currentEnergy", CurrentEnergy);
+        PlayerPrefs.SetFloat("maxEnergy", MaxEnergy);
+        PlayerPrefs.SetFloat("currentEnergy", CurrentEnergy);
 
-        PlayerPrefs.SetInt("currentMoney", CurrentMoney);
+        PlayerPrefs.SetFloat("currentMoney", CurrentMoney);
 
         PlayerPrefs.SetInt("currentDay", CurrentDay);
+
+        PlayerPrefs.SetInt("friendLevel", FriendRelationshipLevel);
+        PlayerPrefs.SetInt("parnetLevel", ParentRelationshipLevel);
 
         PlayerPrefs.SetInt("upgrade1Level", Upgrade1Level);
         PlayerPrefs.SetInt("upgrade2Level", Upgrade2Level);

@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour {
     float walkTime = 0.25f;
 
     [SerializeField]
+    float[] Upgrade2Effect, Upgrade3Effect, Upgrade4Effect, Upgrade5Effect;
+
+    [SerializeField]
     RuntimeAnimatorController[] animatorControllers;
 
     float nextWalkTime = 0;
@@ -77,10 +80,10 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void PlayerAction() {
-        GameData.CurrentEnergy = Mathf.Max(0, GameData.CurrentEnergy - 1);
+        GameData.CurrentEnergy = Mathf.Max(0, GameData.CurrentEnergy - 1 / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level]));
 
         if (GameController.InOffice) {
-            GameData.CurrentMoney += 1;
+            GameData.CurrentMoney += 1 * (1 + Upgrade2Effect[GameData.Upgrade2Level] + Upgrade3Effect[GameData.Upgrade3Level]);
             TaskController.WorkDone += 1;
             //StopCoroutine("WalkAnimation");
             animator.SetBool("isPlayerWalking", false);

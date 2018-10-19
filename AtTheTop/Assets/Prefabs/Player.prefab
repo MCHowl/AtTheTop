@@ -102,6 +102,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 1
   walkTime: 0.25
+  Upgrade2Effect:
+  - 0
+  - 0.1
+  - 0.15
+  - 0.2
+  Upgrade3Effect:
+  - 0
+  - 0.2
+  - 0.3
+  - 0.4
+  Upgrade4Effect:
+  - 0.5
+  - 1
+  - 1.5
+  - 2
+  Upgrade5Effect:
+  - 0.5
+  - 1
+  - 1.5
+  - 2
   animatorControllers:
   - {fileID: 9100000, guid: 80de6ab803ee4fd4280c5248ec8be898, type: 2}
   - {fileID: 9100000, guid: 3a4924eacff830f43951665d52710391, type: 2}
