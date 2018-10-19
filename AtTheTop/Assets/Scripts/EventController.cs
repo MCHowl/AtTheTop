@@ -17,18 +17,24 @@ public class EventController : MonoBehaviour {
 
     public GameObject EventUi;
     public TMPro.TextMeshProUGUI EventUiText;
-    public GameObject ExhaustionUi;
+
+    public GameObject ActionCancelledUi;
+    public TMPro.TextMeshProUGUI ActionCancelledUiText;
+
+    private string exhaustionText = "You feel exhausted. Time to go home.";
+    private string insufficientMoneyText = "You don't have enough money to do this.";
+    private string insufficientEnergyText = "You don't have enough energy to do this.";
 
     Event currentEvent;
 
 	void Start() {
         EventUi.SetActive(false);
-        ExhaustionUi.SetActive(false);
+        ActionCancelledUi.SetActive(false);
 	}
 	
 	void Update() {
 		if (GameData.CurrentEnergy <= 90 && GameController.InOffice) {
-            StartCoroutine(ExhaustionEvent());
+            StartCoroutine(ActionCancelledEvent(exhaustionText));
             GameController.InOffice = false;
         }
 	}
@@ -56,8 +62,14 @@ public class EventController : MonoBehaviour {
     public void AcceptEvent() {
         EventUi.SetActive(false);
 
-        GameData.CurrentEnergy += currentEvent.energyChange;
-        GameData.CurrentMoney += currentEvent.moneyChange;
+        if (GameData.CurrentEnergy + currentEvent.energyChange < 0) {
+            StartCoroutine(ActionCancelledEvent(insufficientEnergyText));
+        } else if (GameData.CurrentMoney + currentEvent.moneyChange < 0) {
+            StartCoroutine(ActionCancelledEvent(insufficientMoneyText));
+        } else {
+            GameData.CurrentEnergy += currentEvent.energyChange;
+            GameData.CurrentMoney += currentEvent.moneyChange;
+        }
 
         GameController.Paused = false;
     }
@@ -67,9 +79,10 @@ public class EventController : MonoBehaviour {
         GameController.Paused = false;
     }
 
-    IEnumerator ExhaustionEvent() {
-        ExhaustionUi.SetActive(true);
+    IEnumerator ActionCancelledEvent(string UiText) {
+        ActionCancelledUiText.text = UiText;
+        ActionCancelledUi.SetActive(true);
         yield return new WaitForSeconds(3.0f);
-        ExhaustionUi.SetActive(false);
+        ActionCancelledUi.SetActive(false);
     }
 }
