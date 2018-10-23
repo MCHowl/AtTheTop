@@ -80,7 +80,7 @@ public class EventController : MonoBehaviour {
         if (currentEvent.energyChange > 0) {
             EventUiText.text += "\nEnergy +" + currentEvent.energyChange;
         } else if (currentEvent.energyChange < 0) {
-            EventUiText.text += "\nEnergy" + currentEvent.energyChange;
+            EventUiText.text += "\nEnergy " + currentEvent.energyChange;
         }
 
         if (currentEvent.moneyChange > 0) {

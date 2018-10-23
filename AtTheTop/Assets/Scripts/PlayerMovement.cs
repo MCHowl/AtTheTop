@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     float moveDistance = 10;
 
     [SerializeField]
-    float walkTime = 0.25f;
+    float walkDelay = 0.25f;
 
     [SerializeField]
     float[] Upgrade2Effect, Upgrade3Effect, Upgrade4Effect, Upgrade5Effect;
@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour {
                 if (hit == true) {
                     if (hit.collider.CompareTag("Player") && Time.time >= nextWalkTime) {
                         PlayerAction();
-                        nextWalkTime = Time.time + walkTime;
+                        nextWalkTime = Time.time + walkDelay;
                     }
                 }
             }
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour {
                 }
             }
         } else {
-            //StopCoroutine("WalkAnimation");
+            StopCoroutine("WalkAnimation");
             animator.SetBool("isPlayerWalking", false);
         }
     }
@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour {
                 WorkSound.Play();
             }
             
-            //StopCoroutine("WalkAnimation");
+            StopCoroutine("WalkAnimation");
             animator.SetBool("isPlayerWalking", false);
         } else {
             if (WorkSound.isPlaying){
@@ -100,8 +100,8 @@ public class PlayerMovement : MonoBehaviour {
             }
 
             WalkSound.Play();
-            //StopCoroutine("WalkAnimation");
-            StartCoroutine(WalkAnimation(0.25f));
+            StopCoroutine("WalkAnimation");
+            StartCoroutine(WalkAnimation(0.15f));
         }
     }
 
@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour {
         float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
 
         while (sqrRemainingDistance > float.Epsilon) {
-            Vector3 newPosition = Vector3.MoveTowards(rb2d.position, end, Time.deltaTime / walkTime);
+            Vector3 newPosition = Vector3.MoveTowards(rb2d.position, end, Time.deltaTime / walkTime * moveDistance);
             rb2d.MovePosition(newPosition);
             sqrRemainingDistance = (transform.position - end).sqrMagnitude;
             yield return null;

@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDistance: 1
-  walkTime: 0.25
+  walkDelay: 0.25
   Upgrade2Effect:
   - 0
   - 0.1

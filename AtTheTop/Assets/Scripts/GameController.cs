@@ -33,8 +33,6 @@ public class GameController : MonoBehaviour {
         EventList.InitialiseWorkEventList();
         EventList.InitialiseFriendEventList();
         EventList.InitialiseParentEventList();
-
-        print("Current Day: " + GameData.CurrentDay);
     }
 
     private void Update() {
@@ -42,12 +40,24 @@ public class GameController : MonoBehaviour {
             Paused = true;
             pauseMenu.SetActive(true);
         }
+
+        if (Input.GetKeyDown(KeyCode.F12)) {
+            GameData.CurrentMoney += 100;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F11)) {
+            GameData.CurrentEnergy = GameData.MaxEnergy;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F10)) {
+            GameData.CurrentDay += 1;
+        }
     }
 
     private void LateUpdate() {
-        moneyText.text = "Money:$" + GameData.CurrentMoney;
+        moneyText.text = "Money:$" + GameData.CurrentMoney.ToString("F2");
         //energyText.text = "Energy: " + GameData.CurrentEnergy + "/" + GameData.MaxEnergy;
-        energyText.text = "Energy:" + GameData.CurrentEnergy / GameData.MaxEnergy * 100f + "%";
+        energyText.text = "Energy:" + (GameData.CurrentEnergy / GameData.MaxEnergy * 100f).ToString("F1") + "%";
     }
 
     public void UnpauseGame() {

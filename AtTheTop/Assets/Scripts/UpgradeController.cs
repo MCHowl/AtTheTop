@@ -58,10 +58,11 @@ public class UpgradeController : MonoBehaviour {
                 UpdateButtonState(Level2ActiveDay, Level2Cost);
                 break;
             case (2):
-                UpdateButtonState(Level2ActiveDay, Level2Cost);
+                UpdateButtonState(Level3ActiveDay, Level3Cost);
                 break;
             default:
                 isUpgradable = false;
+                costText.text = "";
                 break;
         }
 
@@ -96,7 +97,7 @@ public class UpgradeController : MonoBehaviour {
                 } else if (UpgradeLevel == 2) {
                     TooltipUiText.text = "Clicker 3000" + "\n<i>Nothing is free except being hands-free with Clicker 3000</i>" + "\nUnlocked on day " + Level3ActiveDay;
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
                 }
                 break;
             case (2):
@@ -107,7 +108,7 @@ public class UpgradeController : MonoBehaviour {
                 } else if (UpgradeLevel == 2) {
                     TooltipUiText.text = "Royal Blue Shirt" + "\n<i>Suit yourself. Cause that's all you have.</i>" + "\nUnlocked on day " + Level3ActiveDay;
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
                 }
                 break;
             case (3):
@@ -118,7 +119,7 @@ public class UpgradeController : MonoBehaviour {
                 } else if (UpgradeLevel == 2) {
                     TooltipUiText.text = "iOrange" + "\n<i>The 'i' in team is here. iOrange, be you, be alone.</i>" + "\nUnlocked on day " + Level3ActiveDay;
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
                 }
                 break;
             case (4):
@@ -129,7 +130,7 @@ public class UpgradeController : MonoBehaviour {
                 } else if (UpgradeLevel == 2) {
                     TooltipUiText.text = "Tesla" + "\n<i>Telsa, teleport us to mars. So you can live alone, not like there's any difference now anyway.</i>" + "\nUnlocked on day " + Level3ActiveDay;
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
                 }
                 break;
             case (5):
@@ -140,7 +141,7 @@ public class UpgradeController : MonoBehaviour {
                 } else if (UpgradeLevel == 2) {
                     TooltipUiText.text = "Balance! @ CBD" + "\n<i>Live where you work, and you'll never live another day in your life...</i>" + "\nUnlocked on day " + Level3ActiveDay;
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
                 }
                 break;
         }
