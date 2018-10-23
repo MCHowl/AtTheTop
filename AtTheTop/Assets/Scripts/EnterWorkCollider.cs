@@ -10,7 +10,7 @@ public class EnterWorkCollider : MonoBehaviour {
         triggered = false;
     }
 
-    private void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter2D(Collider2D other) {
         if (!triggered) {
             triggered = true;
             GameController.InOffice = true;

@@ -8,6 +8,9 @@ public class UpgradeController : MonoBehaviour {
     Button button;
 
     [SerializeField]
+    TMPro.TextMeshProUGUI costText;
+
+    [SerializeField]
     int UpgradeNumber;
 
     [SerializeField]
@@ -24,6 +27,7 @@ public class UpgradeController : MonoBehaviour {
     }
 
     void Update() {
+
         switch (UpgradeNumber) {
             case (1):
                 UpgradeLevel = GameData.Upgrade1Level;
@@ -42,30 +46,33 @@ public class UpgradeController : MonoBehaviour {
                 break;
         }
 
-        if (isUpgradable) {
-            switch (UpgradeLevel) {
-                case (0):
-                    UpdateButtonState(Level1ActiveDay, Level1Cost);
-                    break;
-                case (1):
-                    UpdateButtonState(Level2ActiveDay, Level2Cost);
-                    break;
-                case (2):
-                    UpdateButtonState(Level2ActiveDay, Level2Cost);
-                    break;
-                default:
-                    isUpgradable = false;
-                    break;
-            }
+        switch (UpgradeLevel) {
+            case (0):
+                UpdateButtonState(Level1ActiveDay, Level1Cost);
+                break;
+            case (1):
+                UpdateButtonState(Level2ActiveDay, Level2Cost);
+                break;
+            case (2):
+                UpdateButtonState(Level2ActiveDay, Level2Cost);
+                break;
+            default:
+                isUpgradable = false;
+                break;
         }
+
     }
 
     void UpdateButtonState(int day, int cost) {
+        costText.text = "$" + cost.ToString();
+
         if (GameData.CurrentDay >= day && GameData.CurrentMoney >= cost) {
             button.interactable = true;
+            costText.color = Color.green;
         }
         else {
             button.interactable = false;
+            costText.color = Color.red;
         }
     }
 

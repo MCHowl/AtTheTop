@@ -35,9 +35,9 @@ public class GameController : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        moneyText.text = "Money: $" + GameData.CurrentMoney;
+        moneyText.text = "Money:$" + GameData.CurrentMoney;
         //energyText.text = "Energy: " + GameData.CurrentEnergy + "/" + GameData.MaxEnergy;
-        energyText.text = "Energy: " + GameData.CurrentEnergy / GameData.MaxEnergy * 100f + "%";
+        energyText.text = "Energy:" + GameData.CurrentEnergy / GameData.MaxEnergy * 100f + "%";
     }
 
     public void RestartDay() {

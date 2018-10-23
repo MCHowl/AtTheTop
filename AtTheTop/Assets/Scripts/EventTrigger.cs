@@ -27,7 +27,7 @@ public class EventTrigger : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (GameData.CurrentDay == TriggerDay && !triggered) {
             triggered = true;
             eventController.TriggerEvent(newEvent);

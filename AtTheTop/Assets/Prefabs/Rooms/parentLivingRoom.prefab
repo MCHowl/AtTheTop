@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4555113136198104}
   - component: {fileID: 212816317133133406}
   - component: {fileID: 114870487616122312}
-  - component: {fileID: 65015499887855248}
+  - component: {fileID: 61717151341560778}
   m_Layer: 0
-  m_Name: Plate
+  m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,8 +80,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448750997803172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.8, y: -2.7, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 2.5, y: -1.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4601086510225422}
   m_RootOrder: 1
@@ -101,18 +101,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65015499887855248
-BoxCollider:
+--- !u!61 &61717151341560778
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448750997803172}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 1.06}
+    newSize: {x: 3, y: 1.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.3, z: 1}
-  m_Center: {x: 4, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114870487616122312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,7 +140,7 @@ MonoBehaviour:
   TriggerDay: 1
   EventText: Eat something your parents left out for you?
   Type: 0
-  EnergyChange: 1
+  EnergyChange: 5
   MoneyChange: 0
   VisibleWhenInactive: 0
 --- !u!212 &212816317133133406
@@ -165,12 +178,12 @@ SpriteRenderer:
   m_SortingLayerID: 776555553
   m_SortingLayer: 4
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 3532889d0af8de741acd40c594d7621e, type: 3}
-  m_Color: {r: 0, g: 0.63934875, b: 0.7924528, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8334ecdb25b8cd54c87807ebbc20b402, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 3.56}
+  m_Size: {x: 3, y: 1.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

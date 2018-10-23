@@ -29,7 +29,7 @@ public class ScreenFade : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (isFadeToBlack) {
             StartCoroutine(FadeToBlack());
         }

@@ -21,11 +21,11 @@ public class PlayerMovement : MonoBehaviour {
     float nextAutoWalkTime = 0;
 
     Animator animator;
-    Rigidbody rb;
+    Rigidbody2D rb2d;
 
     private void Start() {
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+        rb2d = GetComponent<Rigidbody2D>();
 
         switch(PlayerPrefs.GetInt("character")) {
             case (1):
@@ -43,10 +43,9 @@ public class PlayerMovement : MonoBehaviour {
         if (!GameController.Paused) {
             // Manual Clicks
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-                if (Physics.Raycast(ray, out hit)) {
+                if (hit == true) {
                     if (hit.collider.CompareTag("Player") && Time.time >= nextWalkTime) {
                         PlayerAction();
                         nextWalkTime = Time.time + walkTime;
@@ -100,8 +99,8 @@ public class PlayerMovement : MonoBehaviour {
         float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
 
         while (sqrRemainingDistance > float.Epsilon) {
-            Vector3 newPosition = Vector3.MoveTowards(rb.position, end, Time.deltaTime / walkTime);
-            rb.MovePosition(newPosition);
+            Vector3 newPosition = Vector3.MoveTowards(rb2d.position, end, Time.deltaTime / walkTime);
+            rb2d.MovePosition(newPosition);
             sqrRemainingDistance = (transform.position - end).sqrMagnitude;
             yield return null;
         }
