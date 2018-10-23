@@ -76,7 +76,11 @@ public class UpgradeController : MonoBehaviour {
         }
         else {
             button.interactable = false;
-            costText.color = Color.red;
+            if (GameData.CurrentMoney >= cost) {
+                costText.color = Color.yellow;
+            } else {
+                costText.color = Color.red;
+            }
         }
     }
 
@@ -85,23 +89,61 @@ public class UpgradeController : MonoBehaviour {
 
         switch (UpgradeNumber) {
             case (1):
-                TooltipUiText.text = "This magical upgrade will click your character so you don't have to!";
+                if (UpgradeLevel == 0) {
+                    TooltipUiText.text = "Clicker 1000" + "\n<i>Leave it in our hands... so you don't have to use yours!</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                } else if (UpgradeLevel == 1) {
+                    TooltipUiText.text = "Clicker 2077" + "\n<i>'More Clicks More Speed' - The Analects of Confuciu$</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                } else if (UpgradeLevel == 2) {
+                    TooltipUiText.text = "Clicker 3000" + "\n<i>Nothing is free except being hands-free with Clicker 3000</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                } else {
+                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                }
                 break;
             case (2):
-                TooltipUiText.text = "Dress to impress! Increases the amount of money you earn at work.";
+                if (UpgradeLevel == 0) {
+                    TooltipUiText.text = "Navy Blue Shirt" + "\n<i>Gain confidence and show your boss who's boss at work!</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                } else if (UpgradeLevel == 1) {
+                    TooltipUiText.text = "Midnight Blue Shirt" + "\n<i>Honey, where's my super suit? Oh right, you have no one.</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                } else if (UpgradeLevel == 2) {
+                    TooltipUiText.text = "Royal Blue Shirt" + "\n<i>Suit yourself. Cause that's all you have.</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                } else {
+                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                }
                 break;
             case (3):
-                TooltipUiText.text = "Upgrade your efficiency at work! Increases the amount of money you earn.";
+                if (UpgradeLevel == 0) {
+                    TooltipUiText.text = "Orange Air" + "\n<i>Get your heads out of the clouds and your work in the Air.</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                } else if (UpgradeLevel == 1) {
+                    TooltipUiText.text = "Orange Pro" + "\n<i>We put the P in Pro... and Price.</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                } else if (UpgradeLevel == 2) {
+                    TooltipUiText.text = "iOrange" + "\n<i>The 'i' in team is here. iOrange, be you, be alone.</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                } else {
+                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                }
                 break;
             case (4):
-                TooltipUiText.text = "Travel in luxury! Increases the amount of energy you have.";
+                if (UpgradeLevel == 0) {
+                    TooltipUiText.text = "Doyota" + "\n<i>Your everyday car for the everyday career man/woman.</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                } else if (UpgradeLevel == 1) {
+                    TooltipUiText.text = "Laxus" + "\n<i>The same thing, just better.</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                } else if (UpgradeLevel == 2) {
+                    TooltipUiText.text = "Tesla" + "\n<i>Telsa, teleport us to mars. So you can live alone, not like there's any difference now anyway.</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                } else {
+                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                }
                 break;
             case (5):
-                TooltipUiText.text = "Live in comfort! Increases the amount of energy you have.";
+                if (UpgradeLevel == 0) {
+                    TooltipUiText.text = "Sea Esta" + "\n<i>East siders' condo of choice!</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                } else if (UpgradeLevel == 1) {
+                    TooltipUiText.text = "The Life @ Orchard" + "\n<i>Neighbourhood grocery shopping has never been more expensive!</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                } else if (UpgradeLevel == 2) {
+                    TooltipUiText.text = "Balance! @ CBD" + "\n<i>Live where you work, and you'll never live another day in your life...</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                } else {
+                    TooltipUiText.text = "No more upgrades found. Way to go you.";
+                }
                 break;
         }
-
-        TooltipUiText.text += " Upgrades unlock on day " + Level1ActiveDay + ", " + Level2ActiveDay + " & " + Level3ActiveDay;
     }
 
     public void OnMouseExit() {
