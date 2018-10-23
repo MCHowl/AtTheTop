@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField]
     RuntimeAnimatorController[] animatorControllers;
 
+    [SerializeField]
+    AudioSource WalkSound, WorkSound;
+
     float nextWalkTime = 0;
     float nextAutoWalkTime = 0;
 
@@ -84,9 +87,19 @@ public class PlayerMovement : MonoBehaviour {
         if (GameController.InOffice) {
             GameData.CurrentMoney += 1 * (1 + Upgrade2Effect[GameData.Upgrade2Level] + Upgrade3Effect[GameData.Upgrade3Level]);
             TaskController.WorkDone += 1;
+
+            if (!WorkSound.isPlaying) {
+                WorkSound.Play();
+            }
+            
             //StopCoroutine("WalkAnimation");
             animator.SetBool("isPlayerWalking", false);
         } else {
+            if (WorkSound.isPlaying){
+                WorkSound.Stop();
+            }
+
+            WalkSound.Play();
             //StopCoroutine("WalkAnimation");
             StartCoroutine(WalkAnimation(0.25f));
         }

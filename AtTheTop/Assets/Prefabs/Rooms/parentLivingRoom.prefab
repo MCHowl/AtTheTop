@@ -138,7 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerDay: 1
-  EventText: Eat something your parents left out for you?
+  EventText: To celebrate your first day of work, your parents made you some food.
+    Eat?
   Type: 0
   EnergyChange: 5
   MoneyChange: 0

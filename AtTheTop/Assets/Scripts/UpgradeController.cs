@@ -7,6 +7,9 @@ public class UpgradeController : MonoBehaviour {
 
     Button button;
 
+    public GameObject TooltipUi;
+    public TMPro.TextMeshProUGUI TooltipUiText;
+
     [SerializeField]
     TMPro.TextMeshProUGUI costText;
 
@@ -24,6 +27,7 @@ public class UpgradeController : MonoBehaviour {
 
     void Start() {
         button = GetComponent<Button>();
+        TooltipUi.SetActive(false);
     }
 
     void Update() {
@@ -74,6 +78,34 @@ public class UpgradeController : MonoBehaviour {
             button.interactable = false;
             costText.color = Color.red;
         }
+    }
+
+    public void OnMouseOver() {
+        TooltipUi.SetActive(true);
+
+        switch (UpgradeNumber) {
+            case (1):
+                TooltipUiText.text = "This magical upgrade will click your character so you don't have to!";
+                break;
+            case (2):
+                TooltipUiText.text = "Dress to impress! Increases the amount of money you earn at work.";
+                break;
+            case (3):
+                TooltipUiText.text = "Upgrade your efficiency at work! Increases the amount of money you earn.";
+                break;
+            case (4):
+                TooltipUiText.text = "Travel in luxury! Increases the amount of energy you have.";
+                break;
+            case (5):
+                TooltipUiText.text = "Live in comfort! Increases the amount of energy you have.";
+                break;
+        }
+
+        TooltipUiText.text += " Upgrades unlock on day " + Level1ActiveDay + ", " + Level2ActiveDay + " & " + Level3ActiveDay;
+    }
+
+    public void OnMouseExit() {
+        TooltipUi.SetActive(false);
     }
 
     public void Upgrade() {

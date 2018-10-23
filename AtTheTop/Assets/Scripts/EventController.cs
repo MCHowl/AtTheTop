@@ -25,6 +25,8 @@ public class EventController : MonoBehaviour {
     public GameObject ActionCancelledUi;
     public TMPro.TextMeshProUGUI ActionCancelledUiText;
 
+    public AudioSource eventTriggeredSound;
+
     private string exhaustionText = "You feel exhausted. Time to go home.";
     private string insufficientMoneyText = "You don't have enough money to do this.";
     private string insufficientEnergyText = "You don't have enough energy to do this.";
@@ -70,8 +72,9 @@ public class EventController : MonoBehaviour {
     public void TriggerEvent(Event newEvent) {
         GameController.Paused = true;
         EventUi.SetActive(true);
-        currentEvent = newEvent;
+        eventTriggeredSound.Play();
 
+        currentEvent = newEvent;
         EventUiText.text = currentEvent.eventText;
 
         if (currentEvent.energyChange > 0) {
