@@ -14,8 +14,7 @@ public class RoomSpawner : MonoBehaviour {
     GameObject[] rooms;
 
     [SerializeField]
-    float separatorLength, roomLength, scale;
-    float spawnIncrementLength;
+    float roomLength;
     Vector3 currentSpawnPosition;
 
     [SerializeField]
@@ -26,23 +25,15 @@ public class RoomSpawner : MonoBehaviour {
     void Start() {
         roomHolder = new GameObject("Rooms").transform;
 
-        spawnIncrementLength = (separatorLength + roomLength) * scale / 2.0f;
         currentSpawnPosition = new Vector3(0, 0, 0);
 
         SpawnAllRooms();
     }
 
     void SpawnAllRooms() {
-        currentSpawnPosition.x = -spawnIncrementLength;
+        currentSpawnPosition.x = -roomLength;
 
-        // spawn first separator
-        Instantiate(separator, currentSpawnPosition, Quaternion.identity, roomHolder);
-        currentSpawnPosition.x += spawnIncrementLength;
-
-        // spawn first room
-        SpawnRoom(startRoom);
-
-        // spawn all sandwich rooms
+        // spawn all rooms
         foreach (int i in roomOrder) {
             SpawnRoom(rooms[i]);
         }
@@ -54,15 +45,10 @@ public class RoomSpawner : MonoBehaviour {
         for (int i = roomOrder.Length - 1; i >= 0; i--) {
             SpawnRoom(rooms[roomOrder[i]]);
         }
-
-        // spawn last room
-        SpawnRoom(startRoom);
     }
 
     void SpawnRoom(GameObject room) {
         Instantiate(room, currentSpawnPosition, Quaternion.identity, roomHolder);
-        currentSpawnPosition.x += spawnIncrementLength;
-        Instantiate(separator, currentSpawnPosition, Quaternion.identity, roomHolder);
-        currentSpawnPosition.x += spawnIncrementLength;
+        currentSpawnPosition.x += roomLength;
     }
 }
