@@ -23,7 +23,6 @@ public class UpgradeController : MonoBehaviour {
     int Level1ActiveDay, Level2ActiveDay, Level3ActiveDay;
 
     int UpgradeLevel;
-    bool isUpgradable = true;
 
     void Start() {
         button = GetComponent<Button>();
@@ -61,7 +60,7 @@ public class UpgradeController : MonoBehaviour {
                 UpdateButtonState(Level3ActiveDay, Level3Cost);
                 break;
             default:
-                isUpgradable = false;
+                button.interactable = false;
                 costText.text = "";
                 break;
         }

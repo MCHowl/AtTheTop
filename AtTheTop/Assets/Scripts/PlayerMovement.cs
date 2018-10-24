@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void PlayerAction() {
-        GameData.CurrentEnergy = Mathf.Max(0, GameData.CurrentEnergy - 1 / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level]));
+        GameData.CurrentEnergy = Mathf.Max(0, GameData.CurrentEnergy - 1f / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level]));
 
         if (GameController.InOffice) {
             GameData.CurrentMoney += 1 * (1 + Upgrade2Effect[GameData.Upgrade2Level] + Upgrade3Effect[GameData.Upgrade3Level]);
