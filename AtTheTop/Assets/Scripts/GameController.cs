@@ -55,9 +55,9 @@ public class GameController : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        moneyText.text = "Money:$" + GameData.CurrentMoney.ToString("F2");
+        moneyText.text = "$" + GameData.CurrentMoney.ToString("F2");
         //energyText.text = "Energy: " + GameData.CurrentEnergy + "/" + GameData.MaxEnergy;
-        energyText.text = "Energy:" + (GameData.CurrentEnergy / GameData.MaxEnergy * 100f).ToString("F1") + "%";
+        energyText.text = (GameData.CurrentEnergy / GameData.MaxEnergy * 100f).ToString("F1") + "%";
     }
 
     public void UnpauseGame() {

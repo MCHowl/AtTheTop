@@ -32,7 +32,7 @@ public class TaskController : MonoBehaviour {
                 currentTask = GetNewTask();
             }
             
-            TaskUiText.text = "Current Task\n" + currentTask + ": " + WorkDone + "/" + taskEnergy;
+            TaskUiText.text = currentTask + ": " + WorkDone + "/" + taskEnergy;
         } else {
             TaskUi.SetActive(false);
         }
