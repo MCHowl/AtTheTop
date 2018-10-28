@@ -9,19 +9,11 @@ public class GameController : MonoBehaviour {
     public TMPro.TextMeshProUGUI energyText;
     public TMPro.TextMeshProUGUI moneyText;
     public GameObject pauseMenu;
+    public Image fadeScreen;
 
     // Properties
     public static bool Paused { get; set; }
     public static bool InOffice { get; set; }
-
-    // Listeners
-    private void OnEnable() {
-        ScreenFade.DayEndEvent += RestartDay;
-    }
-
-    private void OnDisable() {
-        ScreenFade.DayEndEvent -= RestartDay;
-    }
 
     // Game Management
     private void Start() {
@@ -65,10 +57,15 @@ public class GameController : MonoBehaviour {
         pauseMenu.SetActive(false);
     }
 
-    public void RestartDay() {
-        GameData.CurrentEnergy = GameData.MaxEnergy;
+    public IEnumerator RestartDay(float percentEnergy) {
+        Paused = true;
+
+        GameData.CurrentEnergy = percentEnergy * GameData.MaxEnergy;
         GameData.CurrentDay += 1;
         GameData.SavePlayerData();
+
+        yield return StartCoroutine(fadeScreen.GetComponent<FadeToAlpha>().FadeToBlack());
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

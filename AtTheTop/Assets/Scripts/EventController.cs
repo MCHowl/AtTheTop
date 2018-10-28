@@ -26,8 +26,10 @@ public class EventController : MonoBehaviour {
     public TMPro.TextMeshProUGUI ActionCancelledUiText;
 
     public AudioSource eventTriggeredSound;
+    private GameController gameController;
 
-    private string exhaustionText = "You feel exhausted. Time to go home.";
+    private string dayOverText = "You are overcome with exhaustion.";
+    private string exhaustionText = "You feel tired. Time to go home.";
     private string insufficientMoneyText = "You don't have enough money to do this.";
     private string insufficientEnergyText = "You don't have enough energy to do this.";
 
@@ -40,6 +42,8 @@ public class EventController : MonoBehaviour {
     private bool event1Triggered, event2Triggered, event3Triggered;
 
 	void Start() {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+
         EventUi.SetActive(false);
         ActionCancelledUi.SetActive(false);
 
@@ -52,9 +56,14 @@ public class EventController : MonoBehaviour {
     }
 	
 	void Update() {
-		if (GameData.CurrentEnergy <= 90 && GameController.InOffice) {
+		if (GameData.CurrentEnergy/GameData.MaxEnergy <= 0.25 && GameController.InOffice) {
             StartCoroutine(ActionCancelledEvent(exhaustionText));
             GameController.InOffice = false;
+        }
+
+        if (GameData.CurrentEnergy <= 0) {
+            StartCoroutine(ActionCancelledEvent(dayOverText));
+            StartCoroutine(gameController.RestartDay(0.8f));
         }
 
         if ((int)GameData.CurrentEnergy == event1Time && !event1Triggered) {

@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
 
-        switch(PlayerPrefs.GetInt("character")) {
+        switch (PlayerPrefs.GetInt("character")) {
             case (1):
                 animator.runtimeAnimatorController = animatorControllers[0] as RuntimeAnimatorController;
                 break;
