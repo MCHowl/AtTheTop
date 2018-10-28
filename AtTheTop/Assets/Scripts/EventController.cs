@@ -63,7 +63,7 @@ public class EventController : MonoBehaviour {
 
         if (GameData.CurrentEnergy <= 0) {
             StartCoroutine(ActionCancelledEvent(dayOverText));
-            StartCoroutine(gameController.RestartDay(0.8f));
+            StartCoroutine(gameController.RestartDay(0.9f));
         }
 
         if ((int)GameData.CurrentEnergy == event1Time && !event1Triggered) {

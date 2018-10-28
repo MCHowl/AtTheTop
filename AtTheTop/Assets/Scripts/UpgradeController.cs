@@ -9,6 +9,7 @@ public class UpgradeController : MonoBehaviour {
 
     public GameObject TooltipUi;
     public TMPro.TextMeshProUGUI TooltipUiText;
+    public TMPro.TextMeshProUGUI TooltipUiDescription;
 
     [SerializeField]
     TMPro.TextMeshProUGUI costText;
@@ -86,34 +87,35 @@ public class UpgradeController : MonoBehaviour {
                     if (button.interactable) {
                         TooltipUiText.text = "Clicker 1000: Autoclicks every second";
                     } else {
-                        TooltipUiText.text = "?????? ????: ?????????? ????? ???????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Leave it in our hands... so you don't have to use yours!\n</i>";
+                    TooltipUiDescription.text = "<i>Leave it in our hands... so you don't have to use yours!\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 1) {
                     if (button.interactable) {
                         TooltipUiText.text = "Clicker 2077: Autoclicks every 0.5 seconds";
                     } else {
-                        TooltipUiText.text = "?????? ????: ?????????? ????? ??? ????????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    'More Clicks More Speed' - The Analects of Confuciu$\n</i>";
+                    TooltipUiDescription.text = "<i>'More Clicks More Speed' - The Analects of Confuciu$\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 2) {
                     if (button.interactable) {
                         TooltipUiText.text = "Clicker 3000: Autoclicks every 0.25 seconds";
                     } else {
-                        TooltipUiText.text = "?????? ????: ?????????? ????? ???? ????????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Nothing is free except being hands-free with Clicker 3000\n</i>";
+                    TooltipUiDescription.text = "<i>Nothing is free except being hands-free with Clicker 3000\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else {
-                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached. Way to go you.";
+                    TooltipUiDescription.text = "";
                 }
                 break;
             case (2):
@@ -121,35 +123,35 @@ public class UpgradeController : MonoBehaviour {
                     if (button.interactable) {
                         TooltipUiText.text = "Navy Blue Shirt: Money earned +10%";
                     } else {
-                        TooltipUiText.text = "???? ???? ?????: ????? ?????? ????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Gain confidence and show your boss who's boss at work!\n</i>";
+                    TooltipUiDescription.text = "<i>Gain confidence and show your boss who's boss at work!\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 1) {
                     if (button.interactable) {
                         TooltipUiText.text = "Midnight Blue Shirt: Money earned +15%";
                     } else {
-                        TooltipUiText.text = "???????? ???? ?????: ????? ?????? ????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Honey, where's my super suit? Oh right, you have no one.\n</i>";
-                    if (button.interactable)
-                    {
-                        TooltipUiText.text += "    Click to purchase";
+                    TooltipUiDescription.text = "<i>Honey, where's my super suit? Oh right, you have no one.\n</i>";
+                    if (button.interactable) {
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 2) {
                     if (button.interactable) {
                         TooltipUiText.text = "Royal Blue Shirt: Money earned +20%";
                     } else {
-                        TooltipUiText.text = "????? ???? ?????: ????? ?????? ????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Suit yourself. Cause that's all you have.\n</i>";
+                    TooltipUiDescription.text = "<i>Suit yourself. Cause that's all you have.\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else {
-                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached. Way to go you.";
+                    TooltipUiDescription.text = "";
                 }
                 break;
             case (3):
@@ -157,35 +159,36 @@ public class UpgradeController : MonoBehaviour {
                     if (button.interactable) {
                         TooltipUiText.text = "Orange Air: Money earned +20%";
                     } else {
-                        TooltipUiText.text = "?????? ???: ????? ?????? ????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Get your heads out of the clouds and your work in the Air.\n</i>";
+                    TooltipUiDescription.text = "<i>Get your heads out of the clouds and your work in the Air.\n</i>";
                     if (button.interactable)
                     {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 1) {
                     if (button.interactable) {
                         TooltipUiText.text = "Orange Air: Money earned +30%";
                     } else {
-                        TooltipUiText.text = "?????? ???: ????? ?????? ????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    We put the P in Pro... and Price.\n</i>";
+                    TooltipUiDescription.text = "<i>We put the P in Pro... and Price.\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 2) {
                     if (button.interactable) {
                         TooltipUiText.text = "iOrange: Money earned +40%";
                     } else {
-                        TooltipUiText.text = "???????: ????? ?????? ????";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    The 'i' in team is here. iOrange, be you, be alone.\n</i>";
+                    TooltipUiDescription.text = "<i>The 'i' in team is here. iOrange, be you, be alone.\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else {
-                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached. Way to go you.";
+                    TooltipUiDescription.text = "";
                 }
                 break;
             case (4):
@@ -193,34 +196,35 @@ public class UpgradeController : MonoBehaviour {
                     if (button.interactable) {
                         TooltipUiText.text = "Doyota: Clicking efficiency x2";
                     } else {
-                        TooltipUiText.text = "??????: ???????? ?????????? ??";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Your everyday car for the everyday career man/woman.\n</i>";
+                    TooltipUiDescription.text = "<i>Your everyday car for the everyday career man/woman.\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 1) {
                     if (button.interactable) {
                         TooltipUiText.text = "Laxus: Clicking efficiency x3";
                     } else {
-                        TooltipUiText.text = "?????: ???????? ?????????? ??";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    The same thing, just better.\n</i>";
+                    TooltipUiDescription.text = "<i>The same thing, just better.\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 2) {
                     if (button.interactable) {
                         TooltipUiText.text = "Laxus: Clicking efficiency x4";
                     } else {
-                        TooltipUiText.text = "?????: ???????? ?????????? ??";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Telsa, teleport us to mars. So you can live alone, not like there's any difference now anyway.\n</i>";
+                    TooltipUiDescription.text = "<i>Telsa, teleport us to mars. So you can live alone, not like there's any difference now anyway.\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else {
-                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached. Way to go you.";
+                    TooltipUiDescription.text = "";
                 }
                 break;
             case (5):
@@ -228,34 +232,35 @@ public class UpgradeController : MonoBehaviour {
                     if (button.interactable) {
                         TooltipUiText.text = "Sea Esta: Clicking efficiency x2";
                     } else {
-                        TooltipUiText.text = "??? ????: ???????? ?????????? ??";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    East siders' condo of choice!\n</i>";
+                    TooltipUiDescription.text = "<i>East siders' condo of choice!\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 1) {
                     if (button.interactable) {
                         TooltipUiText.text = "The Life @ Orchard: Clicking efficiency x3";
                     } else {
-                        TooltipUiText.text = "??? ???? ? ???????: ???????? ?????????? ??";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Neighbourhood grocery shopping has never been more expensive!\n</i>";
+                    TooltipUiDescription.text = "<i>Neighbourhood grocery shopping has never been more expensive!\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else if (UpgradeLevel == 2) {
                     if (button.interactable) {
                         TooltipUiText.text = "Balance! @ CBD: Clicking efficiency x4";
                     } else {
-                        TooltipUiText.text = "???????? ? ???: ???????? ?????????? ??";
+                        TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiText.text += "\n<i>    Live where you work, and you'll never live another day in your life...\n</i>";
+                    TooltipUiDescription.text = "<i>Live where you work, and you'll never live another day in your life...\n</i>";
                     if (button.interactable) {
-                        TooltipUiText.text += "    Click to purchase";
+                        TooltipUiDescription.text += "Click to purchase";
                     }
                 } else {
-                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached. Way to go you.";
+                    TooltipUiDescription.text = "";
                 }
                 break;
         }
