@@ -9,9 +9,9 @@ public class EventController : MonoBehaviour {
 
         public string eventText;
         public EventType eventType;
-        public int energyChange, moneyChange;
+        public float energyChange, moneyChange;
 
-        public Event(string newEventText, EventType newType, int newEnergyChange, int newMoneyChange) {
+        public Event(string newEventText, EventType newType, float newEnergyChange, float newMoneyChange) {
             eventText = newEventText;
             eventType = newType;
             energyChange = newEnergyChange;
@@ -78,9 +78,9 @@ public class EventController : MonoBehaviour {
         EventUiText.text = currentEvent.eventText;
 
         if (currentEvent.energyChange > 0) {
-            EventUiText.text += "\nEnergy +" + currentEvent.energyChange;
+            EventUiText.text += "\nEnergy +" + currentEvent.energyChange + "%";
         } else if (currentEvent.energyChange < 0) {
-            EventUiText.text += "\nEnergy " + currentEvent.energyChange;
+            EventUiText.text += "\nEnergy " + currentEvent.energyChange + "%";
         }
 
         if (currentEvent.moneyChange > 0) {
@@ -93,12 +93,12 @@ public class EventController : MonoBehaviour {
     public void AcceptEvent() {
         EventUi.SetActive(false);
 
-        if (GameData.CurrentEnergy + currentEvent.energyChange < 0) {
+        if (GameData.CurrentEnergy + (currentEvent.energyChange * GameData.MaxEnergy / 100) < 0) {
             StartCoroutine(ActionCancelledEvent(insufficientEnergyText));
         } else if (GameData.CurrentMoney + currentEvent.moneyChange < 0) {
             StartCoroutine(ActionCancelledEvent(insufficientMoneyText));
         } else {
-            GameData.CurrentEnergy += currentEvent.energyChange;
+            GameData.CurrentEnergy += currentEvent.energyChange * GameData.MaxEnergy / 100;
             GameData.CurrentMoney += currentEvent.moneyChange;
         }
 
