@@ -10,12 +10,20 @@ public class TaskController : MonoBehaviour {
 
     public static int WorkDone { get; set; }
 
-    string currentTask;
-    int taskEnergy = 100;
+    int taskQuantity = 5;
+    string[] currentTasks;
+
+    int[] currentTasksEnergy;
+    int baseTaskEnergy = 20;
+    int totalTaskEnergy;
 
     void Start () {
         TaskUi.SetActive(false);
-        currentTask = GetNewTask();
+
+        currentTasks = new string[taskQuantity];
+        currentTasksEnergy = new int[taskQuantity];
+
+        totalTaskEnergy = GetNewTasks();
 
         WorkDone = 0;
 	}
@@ -26,19 +34,44 @@ public class TaskController : MonoBehaviour {
             if (!TaskUi.activeSelf) {
                 TaskUi.SetActive(true);
             }
-            
-            if (WorkDone >= taskEnergy) {
+
+            if (WorkDone >= totalTaskEnergy) {
                 WorkDone = 0;
-                currentTask = GetNewTask();
+                totalTaskEnergy = GetNewTasks();
             }
-            
-            TaskUiText.text = currentTask + ": " + WorkDone + "/" + taskEnergy;
+
+            TaskUiText.text = "";
+            int remainingEnergy = WorkDone;
+
+            for (int i = 0; i < taskQuantity; i++) {
+
+                TaskUiText.text += currentTasks[i] + ": ";
+
+                if (remainingEnergy < currentTasksEnergy[i]) {
+                    TaskUiText.text += remainingEnergy;
+                } else {
+                    TaskUiText.text += currentTasksEnergy[i];
+                }
+
+                TaskUiText.text += "/" + currentTasksEnergy[i] + "\n";
+
+                remainingEnergy = Mathf.Max(0, remainingEnergy - currentTasksEnergy[i]);
+            }
+
         } else {
             TaskUi.SetActive(false);
         }
 	}
 
-    string GetNewTask() {
-        return PossibleTasks[Random.Range(0, PossibleTasks.Length)];
+    int GetNewTasks() {
+        int energyTotal = 0;
+
+        for (int i = 0; i < taskQuantity; i++) {
+            currentTasks[i] = PossibleTasks[Random.Range(0, PossibleTasks.Length)];
+            currentTasksEnergy[i] = baseTaskEnergy + Random.Range(-GameData.CurrentDay * 5, GameData.CurrentDay * 5);
+            energyTotal += currentTasksEnergy[i];
+        }
+
+        return energyTotal;
     }
 }

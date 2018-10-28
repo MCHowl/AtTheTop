@@ -268,9 +268,6 @@ MonoBehaviour:
   Level1Cost: 250
   Level2Cost: 350
   Level3Cost: 450
-  Level1ActiveDay: 7
-  Level2ActiveDay: 11
-  Level3ActiveDay: 17
 --- !u!114 &60864331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,9 +2572,6 @@ MonoBehaviour:
   Level1Cost: 300
   Level2Cost: 500
   Level3Cost: 700
-  Level1ActiveDay: 13
-  Level2ActiveDay: 21
-  Level3ActiveDay: 24
 --- !u!114 &1201677650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3185,9 +3179,6 @@ MonoBehaviour:
   Level1Cost: 100
   Level2Cost: 200
   Level3Cost: 300
-  Level1ActiveDay: 3
-  Level2ActiveDay: 8
-  Level3ActiveDay: 22
 --- !u!114 &1372243954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4381,9 +4372,6 @@ MonoBehaviour:
   Level1Cost: 200
   Level2Cost: 250
   Level3Cost: 300
-  Level1ActiveDay: 5
-  Level2ActiveDay: 9
-  Level3ActiveDay: 15
 --- !u!114 &1753027031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4886,9 +4874,6 @@ MonoBehaviour:
   Level1Cost: 500
   Level2Cost: 1000
   Level3Cost: 2000
-  Level1ActiveDay: 20
-  Level2ActiveDay: 26
-  Level3ActiveDay: 28
 --- !u!114 &2141861601
 MonoBehaviour:
   m_ObjectHideFlags: 0
