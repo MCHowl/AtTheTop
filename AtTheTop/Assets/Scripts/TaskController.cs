@@ -6,6 +6,7 @@ public class TaskController : MonoBehaviour {
 
     public GameObject TaskUi;
     public TMPro.TextMeshProUGUI TaskUiText;
+    public GameObject OvertimeUi;
     public string[] PossibleTasks;
 
     public static int WorkDone { get; set; }
@@ -19,6 +20,7 @@ public class TaskController : MonoBehaviour {
 
     void Start () {
         TaskUi.SetActive(false);
+        OvertimeUi.SetActive(false);
 
         currentTasks = new string[taskQuantity];
         currentTasksEnergy = new int[taskQuantity];
@@ -28,16 +30,10 @@ public class TaskController : MonoBehaviour {
         WorkDone = 0;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (GameController.InOffice) {
             if (!TaskUi.activeSelf) {
                 TaskUi.SetActive(true);
-            }
-
-            if (WorkDone >= totalTaskEnergy) {
-                WorkDone = 0;
-                totalTaskEnergy = GetNewTasks();
             }
 
             TaskUiText.text = "";
@@ -58,6 +54,12 @@ public class TaskController : MonoBehaviour {
                 remainingEnergy = Mathf.Max(0, remainingEnergy - currentTasksEnergy[i]);
             }
 
+            if (WorkDone >= totalTaskEnergy) {
+                GameController.Paused = true;
+                TaskUiText.text = "You've completed your work for the day. But there's always money waiting to be earned. Work overtime?";
+                OvertimeUi.SetActive(true);
+            }
+
         } else {
             TaskUi.SetActive(false);
         }
@@ -68,10 +70,23 @@ public class TaskController : MonoBehaviour {
 
         for (int i = 0; i < taskQuantity; i++) {
             currentTasks[i] = PossibleTasks[Random.Range(0, PossibleTasks.Length)];
-            currentTasksEnergy[i] = baseTaskEnergy + Random.Range(-GameData.CurrentDay * 5, GameData.CurrentDay * 5);
+            currentTasksEnergy[i] = baseTaskEnergy + Random.Range(-GameData.CurrentDay * 2, GameData.CurrentDay * 5);
             energyTotal += currentTasksEnergy[i];
         }
 
         return energyTotal;
+    }
+
+    public void Overtime() {
+        OvertimeUi.SetActive(false);
+        GameController.Paused = false;
+        WorkDone = 0;
+        totalTaskEnergy = GetNewTasks();
+    }
+
+    public void GoHome() {
+        OvertimeUi.SetActive(false);
+        GameController.Paused = false;
+        GameController.InOffice = false;
     }
 }
