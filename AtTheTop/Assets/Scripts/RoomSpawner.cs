@@ -12,7 +12,7 @@ public class RoomSpawner : MonoBehaviour {
     Vector3 currentSpawnPosition;
 
     [SerializeField]
-    int[] roomOrder;
+    int[] hdbRoomOrder, cbdRoomOrder;
 
     Transform roomHolder;
 
@@ -28,9 +28,16 @@ public class RoomSpawner : MonoBehaviour {
         currentSpawnPosition.x = -roomLength;
 
         // spawn all rooms
-        foreach (int i in roomOrder) {
-            SpawnRoom(rooms[i]);
+        if (GameData.Upgrade5Level <= 1) {
+            foreach (int i in hdbRoomOrder) {
+                SpawnRoom(rooms[i]);
+            }
+        } else {
+            foreach (int i in cbdRoomOrder) {
+                SpawnRoom(rooms[i]);
+            }
         }
+        
     }
 
     void SpawnRoom(GameObject room) {
