@@ -19,9 +19,6 @@ public class UpgradeController : MonoBehaviour {
     [SerializeField]
     int Level1Cost, Level2Cost, Level3Cost;
 
-    [SerializeField]
-    int Level1ActiveDay, Level2ActiveDay, Level3ActiveDay;
-
     int UpgradeLevel;
 
     void Start() {
@@ -51,13 +48,13 @@ public class UpgradeController : MonoBehaviour {
 
         switch (UpgradeLevel) {
             case (0):
-                UpdateButtonState(Level1ActiveDay, Level1Cost);
+                UpdateButtonState(Level1Cost);
                 break;
             case (1):
-                UpdateButtonState(Level2ActiveDay, Level2Cost);
+                UpdateButtonState(Level2Cost);
                 break;
             case (2):
-                UpdateButtonState(Level3ActiveDay, Level3Cost);
+                UpdateButtonState(Level3Cost);
                 break;
             default:
                 button.interactable = false;
@@ -67,20 +64,16 @@ public class UpgradeController : MonoBehaviour {
 
     }
 
-    void UpdateButtonState(int day, int cost) {
+    void UpdateButtonState(int cost) {
         costText.text = "$" + cost.ToString();
 
-        if (GameData.CurrentDay >= day && GameData.CurrentMoney >= cost) {
+        if (GameData.CurrentMoney >= cost) {
             button.interactable = true;
             costText.color = Color.green;
         }
         else {
             button.interactable = false;
-            if (GameData.CurrentMoney >= cost) {
-                costText.color = Color.yellow;
-            } else {
-                costText.color = Color.red;
-            }
+            costText.color = Color.red;
         }
     }
 
@@ -90,57 +83,179 @@ public class UpgradeController : MonoBehaviour {
         switch (UpgradeNumber) {
             case (1):
                 if (UpgradeLevel == 0) {
-                    TooltipUiText.text = "Clicker 1000" + "\n<i>Leave it in our hands... so you don't have to use yours!</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Clicker 1000: Autoclicks every second";
+                    } else {
+                        TooltipUiText.text = "?????? ????: ?????????? ????? ???????";
+                    }
+                    TooltipUiText.text += "\n<i>    Leave it in our hands... so you don't have to use yours!\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 1) {
-                    TooltipUiText.text = "Clicker 2077" + "\n<i>'More Clicks More Speed' - The Analects of Confuciu$</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Clicker 2077: Autoclicks every 0.5 seconds";
+                    } else {
+                        TooltipUiText.text = "?????? ????: ?????????? ????? ??? ????????";
+                    }
+                    TooltipUiText.text += "\n<i>    'More Clicks More Speed' - The Analects of Confuciu$\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 2) {
-                    TooltipUiText.text = "Clicker 3000" + "\n<i>Nothing is free except being hands-free with Clicker 3000</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Clicker 3000: Autoclicks every 0.25 seconds";
+                    } else {
+                        TooltipUiText.text = "?????? ????: ?????????? ????? ???? ????????";
+                    }
+                    TooltipUiText.text += "\n<i>    Nothing is free except being hands-free with Clicker 3000\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
                 }
                 break;
             case (2):
                 if (UpgradeLevel == 0) {
-                    TooltipUiText.text = "Navy Blue Shirt" + "\n<i>Gain confidence and show your boss who's boss at work!</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Navy Blue Shirt: Money earned +10%";
+                    } else {
+                        TooltipUiText.text = "???? ???? ?????: ????? ?????? ????";
+                    }
+                    TooltipUiText.text += "\n<i>    Gain confidence and show your boss who's boss at work!\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 1) {
-                    TooltipUiText.text = "Midnight Blue Shirt" + "\n<i>Honey, where's my super suit? Oh right, you have no one.</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Midnight Blue Shirt: Money earned +15%";
+                    } else {
+                        TooltipUiText.text = "???????? ???? ?????: ????? ?????? ????";
+                    }
+                    TooltipUiText.text += "\n<i>    Honey, where's my super suit? Oh right, you have no one.\n</i>";
+                    if (button.interactable)
+                    {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 2) {
-                    TooltipUiText.text = "Royal Blue Shirt" + "\n<i>Suit yourself. Cause that's all you have.</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Royal Blue Shirt: Money earned +20%";
+                    } else {
+                        TooltipUiText.text = "????? ???? ?????: ????? ?????? ????";
+                    }
+                    TooltipUiText.text += "\n<i>    Suit yourself. Cause that's all you have.\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
                 }
                 break;
             case (3):
                 if (UpgradeLevel == 0) {
-                    TooltipUiText.text = "Orange Air" + "\n<i>Get your heads out of the clouds and your work in the Air.</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Orange Air: Money earned +20%";
+                    } else {
+                        TooltipUiText.text = "?????? ???: ????? ?????? ????";
+                    }
+                    TooltipUiText.text += "\n<i>    Get your heads out of the clouds and your work in the Air.\n</i>";
+                    if (button.interactable)
+                    {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 1) {
-                    TooltipUiText.text = "Orange Pro" + "\n<i>We put the P in Pro... and Price.</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Orange Air: Money earned +30%";
+                    } else {
+                        TooltipUiText.text = "?????? ???: ????? ?????? ????";
+                    }
+                    TooltipUiText.text += "\n<i>    We put the P in Pro... and Price.\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 2) {
-                    TooltipUiText.text = "iOrange" + "\n<i>The 'i' in team is here. iOrange, be you, be alone.</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "iOrange: Money earned +40%";
+                    } else {
+                        TooltipUiText.text = "???????: ????? ?????? ????";
+                    }
+                    TooltipUiText.text += "\n<i>    The 'i' in team is here. iOrange, be you, be alone.\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
                 }
                 break;
             case (4):
                 if (UpgradeLevel == 0) {
-                    TooltipUiText.text = "Doyota" + "\n<i>Your everyday car for the everyday career man/woman.</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Doyota: Clicking efficiency x2";
+                    } else {
+                        TooltipUiText.text = "??????: ???????? ?????????? ??";
+                    }
+                    TooltipUiText.text += "\n<i>    Your everyday car for the everyday career man/woman.\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 1) {
-                    TooltipUiText.text = "Laxus" + "\n<i>The same thing, just better.</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Laxus: Clicking efficiency x3";
+                    } else {
+                        TooltipUiText.text = "?????: ???????? ?????????? ??";
+                    }
+                    TooltipUiText.text += "\n<i>    The same thing, just better.\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 2) {
-                    TooltipUiText.text = "Tesla" + "\n<i>Telsa, teleport us to mars. So you can live alone, not like there's any difference now anyway.</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Laxus: Clicking efficiency x4";
+                    } else {
+                        TooltipUiText.text = "?????: ???????? ?????????? ??";
+                    }
+                    TooltipUiText.text += "\n<i>    Telsa, teleport us to mars. So you can live alone, not like there's any difference now anyway.\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
                 }
                 break;
             case (5):
                 if (UpgradeLevel == 0) {
-                    TooltipUiText.text = "Sea Esta" + "\n<i>East siders' condo of choice!</i>" + "\nUnlocked on day " + Level1ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Sea Esta: Clicking efficiency x2";
+                    } else {
+                        TooltipUiText.text = "??? ????: ???????? ?????????? ??";
+                    }
+                    TooltipUiText.text += "\n<i>    East siders' condo of choice!\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 1) {
-                    TooltipUiText.text = "The Life @ Orchard" + "\n<i>Neighbourhood grocery shopping has never been more expensive!</i>" + "\nUnlocked on day " + Level2ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "The Life @ Orchard: Clicking efficiency x3";
+                    } else {
+                        TooltipUiText.text = "??? ???? ? ???????: ???????? ?????????? ??";
+                    }
+                    TooltipUiText.text += "\n<i>    Neighbourhood grocery shopping has never been more expensive!\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else if (UpgradeLevel == 2) {
-                    TooltipUiText.text = "Balance! @ CBD" + "\n<i>Live where you work, and you'll never live another day in your life...</i>" + "\nUnlocked on day " + Level3ActiveDay;
+                    if (button.interactable) {
+                        TooltipUiText.text = "Balance! @ CBD: Clicking efficiency x4";
+                    } else {
+                        TooltipUiText.text = "???????? ? ???: ???????? ?????????? ??";
+                    }
+                    TooltipUiText.text += "\n<i>    Live where you work, and you'll never live another day in your life...\n</i>";
+                    if (button.interactable) {
+                        TooltipUiText.text += "    Click to purchase";
+                    }
                 } else {
-                    TooltipUiText.text = "No more upgrades found. Way to go you.\n";
+                    TooltipUiText.text = "Maximum upgrade level reached.\n    Way to go you.\n";
                 }
                 break;
         }
@@ -180,5 +295,8 @@ public class UpgradeController : MonoBehaviour {
                 GameData.Upgrade5Level++;
                 break;
         }
+
+        OnMouseExit();
+        OnMouseOver();
     }
 }
