@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 1089834278262256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.4, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4072085661562564}
   m_Father: {fileID: 0}
@@ -593,6 +593,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 3a4924eacff830f43951665d52710391, type: 2}
   WalkSound: {fileID: 82305404218305830}
   WorkSound: {fileID: 82140614504986464}
+  nonWorkReduction: 0.75
 --- !u!212 &212553955379951120
 SpriteRenderer:
   m_ObjectHideFlags: 1

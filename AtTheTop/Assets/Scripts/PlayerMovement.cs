@@ -42,7 +42,9 @@ public class PlayerMovement : MonoBehaviour {
             default:
                 break;
         }
-    }
+
+		InitialiseWorkSound();
+	}
 
     void Update() {
         if (!GameController.Paused) {
@@ -91,18 +93,12 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void PlayerAction() {
-        
-
-
-
         if (GameController.InOffice) {
 			GameData.CurrentEnergy = Mathf.Max(0, GameData.CurrentEnergy - 1f / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level]));
 			GameData.CurrentMoney += 1 * (1 + Upgrade2Effect[GameData.Upgrade2Level] + Upgrade3Effect[GameData.Upgrade3Level]);
             TaskController.WorkDone += 1;
 
-            if (!WorkSound.isPlaying) {
-                WorkSound.Play();
-            }
+			StartCoroutine(PlayWorkSound());
 
             if (!animator.GetBool("isPlayerWorking")) {
                 animator.SetBool("isPlayerWorking", true);
@@ -111,11 +107,7 @@ public class PlayerMovement : MonoBehaviour {
             StopCoroutine("WalkAnimation");
             animator.SetBool("isPlayerWalking", false);
         } else {
-			GameData.CurrentEnergy = (Mathf.Max(0, (GameData.CurrentEnergy - 1f / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level])) * nonWorkReduction));
-
-			if (WorkSound.isPlaying){
-                WorkSound.Stop();
-            }
+			GameData.CurrentEnergy = (Mathf.Max(0, GameData.CurrentEnergy - (1f / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level])) * nonWorkReduction));
 
             if (animator.GetBool("isPlayerWorking")) {
                 animator.SetBool("isPlayerWorking", false);
@@ -143,4 +135,17 @@ public class PlayerMovement : MonoBehaviour {
         animator.SetBool("isPlayerWalking", false);
         yield return null;
     }
+
+	void InitialiseWorkSound() {
+		WorkSound.mute = true;
+		WorkSound.Play();
+		WorkSound.Pause();
+		WorkSound.mute = false;
+	}
+
+	IEnumerator PlayWorkSound() {
+		WorkSound.UnPause();
+		yield return new WaitForSeconds(walkDelay);
+		WorkSound.Pause();
+	}
 }
