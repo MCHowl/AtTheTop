@@ -29,24 +29,32 @@ public class TutorialController : MonoBehaviour {
             }
 
             if (appearOnEnergy && (GameData.CurrentEnergy / GameData.MaxEnergy) <= energyShowLimit && !triggered) {
-                triggered = true;
-                tutorialObject.SetActive(true);
-            }
+                
+				tutorialObject.SetActive(true);
+				
+			}
 
-            if (appearOnEnergy && (GameData.CurrentEnergy/GameData.MaxEnergy) <= energyHideLimit && triggered) {
-                tutorialObject.SetActive(false);
-            }
+            if (appearOnEnergy && (GameData.CurrentEnergy/GameData.MaxEnergy) <= energyHideLimit && !triggered) {
+				//tutorialObject.SetActive(false);
+				triggered = true;
+				StartCoroutine(ShowThenHide());
+			}
 
             if (appearOnWork && GameController.InOffice && !triggered) {
                 triggered = true;
-                tutorialObject.SetActive(true);
-            }
+				//tutorialObject.SetActive(true);
+				StartCoroutine(ShowThenHide());
+			}
 
             if (appearOnWork && TaskController.WorkDone >= workHideLimit && triggered) {
-                tutorialObject.SetActive(false);
+                //tutorialObject.SetActive(false);
             }
         }
 
+	}
+
+	public void ShowPopUp() {
+		StartCoroutine(ShowThenHide());
 	}
 
     IEnumerator ShowThenHide() {

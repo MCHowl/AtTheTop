@@ -35,8 +35,8 @@ public class EventController : MonoBehaviour {
 
     Event currentEvent;
 
-    private int eventTimeHigh = (int) (250 * 0.8);
-    private int eventTimeLow = (int) (250 * 0.2);
+    private int eventTimeHigh = (int) (GameData.MaxEnergy * 0.8);
+    private int eventTimeLow = (int) (GameData.MaxEnergy * 0.2);
 
     private int event1Time, event2Time, event3Time;
     private bool event1Triggered, event2Triggered, event3Triggered;
@@ -132,14 +132,14 @@ public class EventController : MonoBehaviour {
         float friendThreshold = 0;
 
         if (GameController.InOffice) {
-            parentThreshold = (float)GameData.ParentRelationshipLevel / 10f * 0.2f;
-            friendThreshold = (float)GameData.FriendRelationshipLevel / 10f * 0.2f + parentThreshold;
+            parentThreshold = ((float)GameData.ParentRelationshipLevel / 10f) * 0.2f;
+            friendThreshold = ((float)GameData.FriendRelationshipLevel / 10f) * 0.2f + parentThreshold;
         } else {
             if (Random.value <= noEventThreshold) {
                 return;
             } else {
-                parentThreshold = (float)GameData.ParentRelationshipLevel / 10f * 0.5f;
-                friendThreshold = (float)GameData.FriendRelationshipLevel / 10f * 0.5f + parentThreshold;
+                parentThreshold = ((float)GameData.ParentRelationshipLevel / 10f) * 0.5f;
+                friendThreshold = ((float)GameData.FriendRelationshipLevel / 10f) * 0.5f + parentThreshold;
             }
         }
 

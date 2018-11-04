@@ -440,7 +440,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Click to Move
+  m_text: Click on Character to Move
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6194b7d17323c4429c2bf1c982e88df, type: 2}
   m_sharedMaterial: {fileID: 21210523733882196, guid: a6194b7d17323c4429c2bf1c982e88df,
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 4.95
+  m_fontSize: 3.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -509,12 +509,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114090897943330466}
-    characterCount: 13
+    characterCount: 26
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
-    lineCount: 2
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -550,9 +550,9 @@ MonoBehaviour:
   appearOnEnergy: 1
   appearOnWork: 0
   moneyShowLimit: 0
-  moneyShowDuration: 0
+  moneyShowDuration: 3
   energyShowLimit: 1
-  energyHideLimit: 0.98
+  energyHideLimit: 0.97
   workHideLimit: 0
   tutorialObject: {fileID: 1556605291633256}
 --- !u!114 &114592698856429140
@@ -682,7 +682,7 @@ SpriteRenderer:
   m_Size: {x: 3.54, y: 3.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!222 &222431317458312522

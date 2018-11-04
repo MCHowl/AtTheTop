@@ -3965,9 +3965,9 @@ MonoBehaviour:
   appearOnEnergy: 1
   appearOnWork: 0
   moneyShowLimit: 0
-  moneyShowDuration: 0
-  energyShowLimit: 0.97
-  energyHideLimit: 0.95
+  moneyShowDuration: 7
+  energyShowLimit: 0.95
+  energyHideLimit: 0.94
   workHideLimit: 0
   tutorialObject: {fileID: 2012411441}
 --- !u!1 &1381911849
@@ -4433,7 +4433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1557665923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4813,10 +4813,10 @@ MonoBehaviour:
   appearOnEnergy: 0
   appearOnWork: 1
   moneyShowLimit: 0
-  moneyShowDuration: 0
+  moneyShowDuration: 7
   energyShowLimit: 0
   energyHideLimit: 0
-  workHideLimit: 5
+  workHideLimit: 0
   tutorialObject: {fileID: 850625592}
 --- !u!1 &1617876205
 GameObject:

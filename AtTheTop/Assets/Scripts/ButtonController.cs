@@ -9,10 +9,16 @@ public class ButtonController : MonoBehaviour {
     [SerializeField]
     Canvas canvas;
 
+	[SerializeField]
+	Image introImage;
+
 	void Start () {
         if (canvas != null) {
             canvas.enabled = false;
         } 
+		if (introImage != null) {
+			introImage.enabled = false;
+		}
 	}
 
     public void CloseApplication() {
@@ -35,7 +41,7 @@ public class ButtonController : MonoBehaviour {
         if (PlayerPrefs.GetInt("character") == 0) {
             ShowCanvas();
         } else {
-            LoadLevel(1);
+			StartCoroutine(IntroScene());
         }
     }
 
@@ -48,4 +54,16 @@ public class ButtonController : MonoBehaviour {
         PlayerPrefs.Save();
         StartGame();
     }
+
+	IEnumerator IntroScene() {
+		introImage.enabled = true;
+		while (introImage.color.a < 1) {
+			Color imageColor = introImage.color;
+			imageColor.a = introImage.color.a + Time.deltaTime / 5f;
+			introImage.color = imageColor;
+			yield return null;
+		}
+		LoadLevel(1);
+		yield return null;
+	}
 }
