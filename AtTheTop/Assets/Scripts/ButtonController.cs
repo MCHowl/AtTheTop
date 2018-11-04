@@ -63,7 +63,8 @@ public class ButtonController : MonoBehaviour {
 			introImage.color = imageColor;
 			yield return null;
 		}
+		yield return new WaitForSeconds(1);
 		LoadLevel(1);
-		yield return null;
+		
 	}
 }
