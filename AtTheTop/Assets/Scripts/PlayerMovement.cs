@@ -52,6 +52,10 @@ public class PlayerMovement : MonoBehaviour {
                     if (hit.collider.CompareTag("Player") && Time.time >= nextWalkTime) {
                         PlayerAction();
                         nextWalkTime = Time.time + walkDelay;
+
+                        if (nextAutoWalkTime - nextWalkTime <= walkDelay) {
+                            nextAutoWalkTime = nextWalkTime;
+                        }
                     }
                 }
             }
@@ -63,12 +67,15 @@ public class PlayerMovement : MonoBehaviour {
                 switch (GameData.Upgrade1Level) {
                     case (1):
                         nextAutoWalkTime = Time.time + 1f;
+                        nextWalkTime = Time.time + walkDelay;
                         break;
                     case (2):
                         nextAutoWalkTime = Time.time + 0.5f;
+                        nextWalkTime = Time.time + walkDelay;
                         break;
                     case (3):
                         nextAutoWalkTime = Time.time + 0.25f;
+                        nextWalkTime = Time.time + walkDelay;
                         break;
                     default:
                         Debug.LogWarning("Upgrade level too high");
@@ -91,12 +98,20 @@ public class PlayerMovement : MonoBehaviour {
             if (!WorkSound.isPlaying) {
                 WorkSound.Play();
             }
+
+            if (!animator.GetBool("isPlayerWorking")) {
+                animator.SetBool("isPlayerWorking", true);
+            }
             
             StopCoroutine("WalkAnimation");
             animator.SetBool("isPlayerWalking", false);
         } else {
             if (WorkSound.isPlaying){
                 WorkSound.Stop();
+            }
+
+            if (animator.GetBool("isPlayerWorking")) {
+                animator.SetBool("isPlayerWorking", false);
             }
 
             WalkSound.Play();
