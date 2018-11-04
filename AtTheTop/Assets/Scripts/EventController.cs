@@ -132,8 +132,8 @@ public class EventController : MonoBehaviour {
         float friendThreshold = 0;
 
         if (GameController.InOffice) {
-            parentThreshold = ((float)GameData.ParentRelationshipLevel / 10f) * 0.2f;
-            friendThreshold = ((float)GameData.FriendRelationshipLevel / 10f) * 0.2f + parentThreshold;
+            parentThreshold = ((float)GameData.ParentRelationshipLevel / 10f) * 0.15f;
+            friendThreshold = ((float)GameData.FriendRelationshipLevel / 10f) * 0.15f + parentThreshold;
         } else {
             if (Random.value <= noEventThreshold) {
                 return;
