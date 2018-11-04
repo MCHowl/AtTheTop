@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour {
     float nextWalkTime = 0;
     float nextAutoWalkTime = 0;
 
+	public float nonWorkReduction = 0.75f;
+
     Animator animator;
     Rigidbody2D rb2d;
 
@@ -89,10 +91,13 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void PlayerAction() {
-        GameData.CurrentEnergy = Mathf.Max(0, GameData.CurrentEnergy - 1f / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level]));
+        
+
+
 
         if (GameController.InOffice) {
-            GameData.CurrentMoney += 1 * (1 + Upgrade2Effect[GameData.Upgrade2Level] + Upgrade3Effect[GameData.Upgrade3Level]);
+			GameData.CurrentEnergy = Mathf.Max(0, GameData.CurrentEnergy - 1f / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level]));
+			GameData.CurrentMoney += 1 * (1 + Upgrade2Effect[GameData.Upgrade2Level] + Upgrade3Effect[GameData.Upgrade3Level]);
             TaskController.WorkDone += 1;
 
             if (!WorkSound.isPlaying) {
@@ -106,7 +111,9 @@ public class PlayerMovement : MonoBehaviour {
             StopCoroutine("WalkAnimation");
             animator.SetBool("isPlayerWalking", false);
         } else {
-            if (WorkSound.isPlaying){
+			GameData.CurrentEnergy = (Mathf.Max(0, (GameData.CurrentEnergy - 1f / (Upgrade4Effect[GameData.Upgrade4Level] + Upgrade5Effect[GameData.Upgrade5Level])) * nonWorkReduction));
+
+			if (WorkSound.isPlaying){
                 WorkSound.Stop();
             }
 
