@@ -20,12 +20,29 @@ public class UpgradeController : MonoBehaviour {
     [SerializeField]
     int Level1Cost, Level2Cost, Level3Cost;
 
+	private Image buttonImage;
+	private SpriteState Level2State, Level3State;
+	public Sprite Level2Image, Level2Disabled, Level2Triggered;
+	public Sprite Level3Image, Level3Disabled, Level3Triggered;
+
+
     int UpgradeLevel;
 
     void Start() {
         button = GetComponent<Button>();
+		buttonImage = GetComponent<Image>();
         TooltipUi.SetActive(false);
-    }
+
+		Level2State = new SpriteState();
+		Level2State.disabledSprite = Level2Disabled;
+		Level2State.highlightedSprite = Level2Triggered;
+		Level2State.pressedSprite = Level2Image;
+
+		Level3State = new SpriteState();
+		Level3State.disabledSprite = Level3Disabled;
+		Level3State.highlightedSprite = Level3Triggered;
+		Level3State.pressedSprite = Level3Image;
+	}
 
     void Update() {
 
@@ -53,10 +70,14 @@ public class UpgradeController : MonoBehaviour {
                 break;
             case (1):
                 UpdateButtonState(Level2Cost);
+				buttonImage.sprite = Level2Image;
+				button.spriteState = Level2State;
                 break;
             case (2):
                 UpdateButtonState(Level3Cost);
-                break;
+				buttonImage.sprite = Level3Image;
+				button.spriteState = Level3State;
+				break;
             default:
                 button.interactable = false;
                 costText.text = "";
@@ -85,7 +106,7 @@ public class UpgradeController : MonoBehaviour {
             case (1):
                 if (UpgradeLevel == 0) {
                     if (button.interactable) {
-                        TooltipUiText.text = "Clicker 1000: Autoclicks every second";
+                        TooltipUiText.text = "Plain Ol' Clicker: Autoclicks every second";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }
@@ -95,7 +116,7 @@ public class UpgradeController : MonoBehaviour {
                     }
                 } else if (UpgradeLevel == 1) {
                     if (button.interactable) {
-                        TooltipUiText.text = "Clicker 2077: Autoclicks every 0.5 seconds";
+                        TooltipUiText.text = "The Silver Servant: Autoclicks every 0.5 seconds";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }
@@ -105,11 +126,11 @@ public class UpgradeController : MonoBehaviour {
                     }
                 } else if (UpgradeLevel == 2) {
                     if (button.interactable) {
-                        TooltipUiText.text = "Clicker 3000: Autoclicks every 0.25 seconds";
+                        TooltipUiText.text = "24k Gold Clicker: Autoclicks every 0.25 seconds";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }
-                    TooltipUiDescription.text = "<i>Nothing is free except being hands-free with Clicker 3000\n</i>";
+                    TooltipUiDescription.text = "<i>Nothing is free except being hands-free\n</i>";
                     if (button.interactable) {
                         TooltipUiDescription.text += "Click to purchase";
                     }
@@ -121,7 +142,7 @@ public class UpgradeController : MonoBehaviour {
             case (2):
                 if (UpgradeLevel == 0) {
                     if (button.interactable) {
-                        TooltipUiText.text = "Navy Blue Shirt: Money earned +10%";
+                        TooltipUiText.text = "Corporate Blue Shirt: Money earned +10%";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }
@@ -131,7 +152,7 @@ public class UpgradeController : MonoBehaviour {
                     }
                 } else if (UpgradeLevel == 1) {
                     if (button.interactable) {
-                        TooltipUiText.text = "Midnight Blue Shirt: Money earned +15%";
+                        TooltipUiText.text = "Dollar Green Shirt: Money earned +15%";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }
@@ -141,7 +162,7 @@ public class UpgradeController : MonoBehaviour {
                     }
                 } else if (UpgradeLevel == 2) {
                     if (button.interactable) {
-                        TooltipUiText.text = "Royal Blue Shirt: Money earned +20%";
+                        TooltipUiText.text = "Prosperity Red Shirt: Money earned +20%";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }
