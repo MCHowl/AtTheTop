@@ -11,6 +11,10 @@ public class GameController : MonoBehaviour {
     public GameObject pauseMenu;
     public Image fadeScreen;
 
+	public GameObject floatingText;
+	private float prevMoney;
+	private float prevEnergy;
+
     // Properties
     public static bool Paused { get; set; }
     public static bool InOffice { get; set; }
@@ -25,6 +29,9 @@ public class GameController : MonoBehaviour {
         EventList.InitialiseWorkEventList();
         EventList.InitialiseFriendEventList();
         EventList.InitialiseParentEventList();
+
+		prevMoney = GameData.CurrentMoney;
+		prevEnergy = GameData.CurrentEnergy;
     }
 
     private void Update() {
@@ -50,6 +57,21 @@ public class GameController : MonoBehaviour {
         moneyText.text = "$" + GameData.CurrentMoney.ToString("F2");
         //energyText.text = "Energy: " + GameData.CurrentEnergy + "/" + GameData.MaxEnergy;
         energyText.text = (GameData.CurrentEnergy / GameData.MaxEnergy * 100f).ToString("F1") + "%";
+
+		if (GameData.CurrentMoney != prevMoney)
+		{
+			GameObject tempMoney = Instantiate(floatingText, moneyText.transform);
+			tempMoney.GetComponent<FloatUpAndDestroy>().InitialiseText(GameData.CurrentMoney - prevMoney, true);
+			prevMoney = GameData.CurrentMoney;
+		}
+
+		if (GameData.CurrentEnergy != prevEnergy)
+		{
+			GameObject tempEnergy = Instantiate(floatingText, energyText.transform);
+			tempEnergy.GetComponent<FloatUpAndDestroy>().InitialiseText((GameData.CurrentEnergy - prevEnergy)/GameData.MaxEnergy * 100f, false);
+			prevEnergy = GameData.CurrentEnergy;
+		}
+
     }
 
     public void UnpauseGame() {

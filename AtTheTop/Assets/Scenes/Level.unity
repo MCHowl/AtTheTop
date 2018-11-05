@@ -989,6 +989,8 @@ MonoBehaviour:
   moneyText: {fileID: 1617876207}
   pauseMenu: {fileID: 157970998}
   fadeScreen: {fileID: 1608545567}
+  floatingText: {fileID: 1287651168720758, guid: d9193fbe6ee5573488fa2824db3ce659,
+    type: 2}
 --- !u!114 &354742250
 MonoBehaviour:
   m_ObjectHideFlags: 0
