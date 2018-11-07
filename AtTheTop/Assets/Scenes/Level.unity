@@ -266,9 +266,9 @@ MonoBehaviour:
   TooltipUiDescription: {fileID: 2074528333}
   costText: {fileID: 1553058656}
   UpgradeNumber: 3
-  Level1Cost: 250
-  Level2Cost: 350
-  Level3Cost: 450
+  Level1Cost: 300
+  Level2Cost: 400
+  Level3Cost: 500
   Level2Image: {fileID: 21300000, guid: def84bbd5e47aa841bfbadf9e113f46a, type: 3}
   Level2Disabled: {fileID: 21300000, guid: 829f7a99fbc1b1142b6dda329ca1d022, type: 3}
   Level2Triggered: {fileID: 21300000, guid: 5fa60cd559e500845b92c92ce637edc1, type: 3}
@@ -979,7 +979,7 @@ MonoBehaviour:
   - {fileID: 1050791416368282, guid: 8558facd30ff1ae4fa77c5ef1522e92e, type: 2}
   roomLength: 20.48
   hdbRoomOrder: 000000000200000004000000060000000100000007000000050000000300000000000000
-  cbdRoomOrder: 00000000080000000a0000000c0000000b0000000900000000000000
+  cbdRoomOrder: 00000000080000000600000001000000070000000900000000000000
 --- !u!114 &354742249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,7 +2193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: -275}
+  m_AnchoredPosition: {x: -317.00006, y: -275}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &766857895
@@ -2419,7 +2419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: 0}
+  m_AnchoredPosition: {x: -137.00006, y: 0}
   m_SizeDelta: {x: 360, y: 480}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &893103115
@@ -3591,7 +3591,7 @@ MonoBehaviour:
   UpgradeNumber: 1
   Level1Cost: 100
   Level2Cost: 200
-  Level3Cost: 300
+  Level3Cost: 400
   Level2Image: {fileID: 21300000, guid: 49cc42bb0cd45bd4fbea68c6fa38fae7, type: 3}
   Level2Disabled: {fileID: 21300000, guid: 933a0f4dbc0fbb8419faf9b5251bc089, type: 3}
   Level2Triggered: {fileID: 21300000, guid: 38dafcb82edba704d8909b723e91fd04, type: 3}
@@ -4547,7 +4547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: 0}
+  m_AnchoredPosition: {x: -137, y: 0}
   m_SizeDelta: {x: 360, y: 480}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1613847770
@@ -6146,9 +6146,9 @@ MonoBehaviour:
   TooltipUiDescription: {fileID: 2074528333}
   costText: {fileID: 280614006}
   UpgradeNumber: 5
-  Level1Cost: 500
+  Level1Cost: 700
   Level2Cost: 1000
-  Level3Cost: 2000
+  Level3Cost: 1500
   Level2Image: {fileID: 21300000, guid: aee0b2731ba5aa34fb4036f573ae2045, type: 3}
   Level2Disabled: {fileID: 21300000, guid: af0edaac915f18d4ebfd98f09fd59f79, type: 3}
   Level2Triggered: {fileID: 21300000, guid: 5518ec6d0b7f6994d9b5b305a43a748c, type: 3}

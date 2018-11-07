@@ -48,7 +48,7 @@ public class GameData : MonoBehaviour {
         PlayerPrefs.SetInt("currentDay", CurrentDay);
 
         PlayerPrefs.SetInt("friendLevel", FriendRelationshipLevel);
-        PlayerPrefs.SetInt("parnetLevel", ParentRelationshipLevel);
+        PlayerPrefs.SetInt("parentLevel", ParentRelationshipLevel);
 
         PlayerPrefs.SetInt("upgrade1Level", Upgrade1Level);
         PlayerPrefs.SetInt("upgrade2Level", Upgrade2Level);

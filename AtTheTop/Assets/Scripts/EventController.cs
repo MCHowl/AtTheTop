@@ -35,11 +35,11 @@ public class EventController : MonoBehaviour {
 
     Event currentEvent;
 
-    private int eventTimeHigh = (int) (GameData.MaxEnergy * 0.8);
-    private int eventTimeLow = (int) (GameData.MaxEnergy * 0.2);
+    private int eventTimeHigh = (int) (GameData.MaxEnergy * 0.9);
+    private int eventTimeLow = (int) (GameData.MaxEnergy * 0.1);
 
-    private int event1Time, event2Time, event3Time;
-    private bool event1Triggered, event2Triggered, event3Triggered;
+    private int event1Time, event2Time, event3Time, event4Time, event5Time, event6Time, event7Time;
+    private bool event1Triggered, event2Triggered, event3Triggered, event4Triggered, event5Triggered, event6Triggered, event7Triggered;
 
 	void Start() {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -50,20 +50,28 @@ public class EventController : MonoBehaviour {
         event1Time = Random.Range(eventTimeLow, eventTimeHigh);
         event2Time = Random.Range(eventTimeLow, eventTimeHigh);
         event3Time = Random.Range(eventTimeLow, eventTimeHigh);
-        event1Triggered = false;
+		event4Time = Random.Range(eventTimeLow, eventTimeHigh);
+		event5Time = Random.Range(eventTimeLow, eventTimeHigh);
+		event6Time = Random.Range(eventTimeLow, eventTimeHigh);
+		event7Time = Random.Range(eventTimeLow, eventTimeHigh);
+		event1Triggered = false;
         event2Triggered = false;
         event3Triggered = false;
+        event4Triggered = false;
+        event5Triggered = false;
+        event6Triggered = false;
+        event7Triggered = false;
     }
 	
 	void Update() {
-		if (GameData.CurrentEnergy/GameData.MaxEnergy <= 0.25 && GameController.InOffice) {
+		if (GameData.CurrentEnergy/GameData.MaxEnergy <= 0.20 && GameController.InOffice) {
             StartCoroutine(ActionCancelledEvent(exhaustionText));
             GameController.InOffice = false;
         }
 
         if (GameData.CurrentEnergy <= 0) {
             StartCoroutine(ActionCancelledEvent(dayOverText));
-            StartCoroutine(gameController.RestartDay(0.9f));
+            StartCoroutine(gameController.RestartDay(0.85f));
         }
 
         if ((int)GameData.CurrentEnergy == event1Time && !event1Triggered) {
@@ -76,7 +84,27 @@ public class EventController : MonoBehaviour {
             CreateRandomEvent();
             event3Triggered = true;
         }
-    }
+		else if ((int)GameData.CurrentEnergy == event4Time && !event4Triggered)
+		{
+			CreateRandomEvent();
+			event4Triggered = true;
+		}
+		else if ((int)GameData.CurrentEnergy == event5Time && !event5Triggered)
+		{
+			CreateRandomEvent();
+			event5Triggered = true;
+		}
+		else if ((int)GameData.CurrentEnergy == event6Time && !event6Triggered)
+		{
+			CreateRandomEvent();
+			event6Triggered = true;
+		}
+		else if ((int)GameData.CurrentEnergy == event7Time && !event7Triggered)
+		{
+			CreateRandomEvent();
+			event7Triggered = true;
+		}
+	}
 
     public void TriggerEvent(Event newEvent) {
         GameController.Paused = true;

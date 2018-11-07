@@ -211,7 +211,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 4.5}
+  m_Size: {x: 3, y: 7}
   m_EdgeRadius: 0
 --- !u!82 &82140614504986464
 AudioSource:
@@ -585,9 +585,9 @@ MonoBehaviour:
   - 2
   Upgrade5Effect:
   - 0.5
-  - 1
-  - 1.5
   - 2
+  - 3
+  - 4
   animatorControllers:
   - {fileID: 9100000, guid: 80de6ab803ee4fd4280c5248ec8be898, type: 2}
   - {fileID: 9100000, guid: 3a4924eacff830f43951665d52710391, type: 2}

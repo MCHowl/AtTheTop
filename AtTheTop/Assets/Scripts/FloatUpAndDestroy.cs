@@ -22,12 +22,18 @@ public class FloatUpAndDestroy : MonoBehaviour {
 		displayText = GetComponent<TMPro.TextMeshProUGUI>();
 		// true = money
 		if (type) {
+
+			//displayText.color = new Color(66f/255f, 165/255f, 19f/255f);
+
 			if (value > 0) {
 				displayText.text = "Money +$" + value.ToString("F2");
 			} else {
 				displayText.text = "Money -$" + Mathf.Abs(value).ToString("F2");
 			}
 		} else {
+
+			//displayText.color = new Color(226f /255f, 223f/255f, 40f/255f);
+
 			if (value > 0) {
 				displayText.text = "Energy +" + value.ToString("F1") + "%";
 			} else {

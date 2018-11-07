@@ -251,7 +251,7 @@ public class UpgradeController : MonoBehaviour {
             case (5):
                 if (UpgradeLevel == 0) {
                     if (button.interactable) {
-                        TooltipUiText.text = "Sea Esta: Clicking efficiency x2";
+                        TooltipUiText.text = "Sea Esta: Clicking efficiency x4";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }
@@ -261,7 +261,7 @@ public class UpgradeController : MonoBehaviour {
                     }
                 } else if (UpgradeLevel == 1) {
                     if (button.interactable) {
-                        TooltipUiText.text = "The Life @ Orchard: Clicking efficiency x3";
+                        TooltipUiText.text = "The Life @ Orchard: Clicking efficiency x6";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }
@@ -271,7 +271,7 @@ public class UpgradeController : MonoBehaviour {
                     }
                 } else if (UpgradeLevel == 2) {
                     if (button.interactable) {
-                        TooltipUiText.text = "Balance! @ CBD: Clicking efficiency x4";
+                        TooltipUiText.text = "Balance! @ CBD: Clicking efficiency x8";
                     } else {
                         TooltipUiText.text = "???: ?????";
                     }

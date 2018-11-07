@@ -15,7 +15,7 @@ public class TaskController : MonoBehaviour {
     string[] currentTasks;
 
     int[] currentTasksEnergy;
-    int baseTaskEnergy = 20;
+    int baseTaskEnergy = 30;
     int totalTaskEnergy;
 
     void Start () {
