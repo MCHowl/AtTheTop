@@ -28,15 +28,15 @@ public class EventController : MonoBehaviour {
     public AudioSource eventTriggeredSound;
     private GameController gameController;
 
-    private string dayOverText = "You are overcome with exhaustion.";
+    private string dayOverText = "You are overcome with exhaustion.\nEnergy -15% Money -30%";
     private string exhaustionText = "You feel tired. Time to go home.";
     private string insufficientMoneyText = "You don't have enough money to do this.";
     private string insufficientEnergyText = "You don't have enough energy to do this.";
 
     Event currentEvent;
 
-    private int eventTimeHigh = (int) (GameData.MaxEnergy * 0.9);
-    private int eventTimeLow = (int) (GameData.MaxEnergy * 0.1);
+    private int eventTimeHigh = (int) (GameData.MaxEnergy * 0.9f);
+    private int eventTimeLow = (int) (GameData.MaxEnergy * 0.1f);
 
     private int event1Time, event2Time, event3Time, event4Time, event5Time, event6Time, event7Time;
     private bool event1Triggered, event2Triggered, event3Triggered, event4Triggered, event5Triggered, event6Triggered, event7Triggered;
@@ -72,6 +72,7 @@ public class EventController : MonoBehaviour {
         if (GameData.CurrentEnergy <= 0) {
             StartCoroutine(ActionCancelledEvent(dayOverText));
             StartCoroutine(gameController.RestartDay(0.85f));
+			GameData.CurrentMoney *= 0.7f;
         }
 
         if ((int)GameData.CurrentEnergy == event1Time && !event1Triggered) {
@@ -83,24 +84,16 @@ public class EventController : MonoBehaviour {
         } else if ((int)GameData.CurrentEnergy == event3Time && !event3Triggered) {
             CreateRandomEvent();
             event3Triggered = true;
-        }
-		else if ((int)GameData.CurrentEnergy == event4Time && !event4Triggered)
-		{
+        } else if ((int)GameData.CurrentEnergy == event4Time && !event4Triggered) {
 			CreateRandomEvent();
 			event4Triggered = true;
-		}
-		else if ((int)GameData.CurrentEnergy == event5Time && !event5Triggered)
-		{
+		} else if ((int)GameData.CurrentEnergy == event5Time && !event5Triggered) {
 			CreateRandomEvent();
 			event5Triggered = true;
-		}
-		else if ((int)GameData.CurrentEnergy == event6Time && !event6Triggered)
-		{
+		} else if ((int)GameData.CurrentEnergy == event6Time && !event6Triggered) {
 			CreateRandomEvent();
 			event6Triggered = true;
-		}
-		else if ((int)GameData.CurrentEnergy == event7Time && !event7Triggered)
-		{
+		} else if ((int)GameData.CurrentEnergy == event7Time && !event7Triggered) {
 			CreateRandomEvent();
 			event7Triggered = true;
 		}
