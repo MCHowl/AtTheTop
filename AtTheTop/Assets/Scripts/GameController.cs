@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour {
     public GameObject pauseMenu;
     public Image fadeScreen;
 
+	public Texture2D silver_cursor;
+	public Texture2D gold_cursor;
+
 	public GameObject floatingText;
 	private float prevMoney;
 	private float prevEnergy;
@@ -26,12 +29,17 @@ public class GameController : MonoBehaviour {
         pauseMenu.SetActive(false);
 
         GameData.LoadPlayerData();
-        EventList.InitialiseWorkEventList();
-        EventList.InitialiseFriendEventList();
-        EventList.InitialiseParentEventList();
+        EventList.InitialiseEventLists();
+		EventResponseList.InitialiseResponseLists();
 
 		prevMoney = GameData.CurrentMoney;
 		prevEnergy = GameData.CurrentEnergy;
+
+		if (GameData.Upgrade1Level == 2) {
+			Cursor.SetCursor(silver_cursor, Vector2.zero, CursorMode.Auto);
+		} else if (GameData.Upgrade1Level == 3) {
+			Cursor.SetCursor(gold_cursor, Vector2.zero, CursorMode.Auto);
+		}
     }
 
     private void Update() {

@@ -11,8 +11,9 @@ public class GameData : MonoBehaviour {
 
     public static int CurrentDay { get; set; }
 
-    public static int FriendRelationshipLevel { get; set; }
-    public static int ParentRelationshipLevel { get; set; }
+    //public static int FriendRelationshipLevel { get; set; }
+    //public static int ParentRelationshipLevel { get; set; }
+	public static int RelationshipLevel { get; set; }
 
     public static int Upgrade1Level { get; set; }
     public static int Upgrade2Level { get; set; }
@@ -29,8 +30,9 @@ public class GameData : MonoBehaviour {
 
         CurrentDay = PlayerPrefs.GetInt("currentDay", 1);
 
-        FriendRelationshipLevel = PlayerPrefs.GetInt("friendlevel", 10);
-        ParentRelationshipLevel = PlayerPrefs.GetInt("parentlevel", 10);
+		//FriendRelationshipLevel = PlayerPrefs.GetInt("friendlevel", 10);
+		//ParentRelationshipLevel = PlayerPrefs.GetInt("parentlevel", 10);
+		RelationshipLevel = PlayerPrefs.GetInt("relationshipLevel", 7);
 
         Upgrade1Level = PlayerPrefs.GetInt("upgrade1Level");
         Upgrade2Level = PlayerPrefs.GetInt("upgrade2Level");
@@ -47,9 +49,10 @@ public class GameData : MonoBehaviour {
 
         PlayerPrefs.SetInt("currentDay", CurrentDay);
 
-        PlayerPrefs.SetInt("friendLevel", FriendRelationshipLevel);
-        PlayerPrefs.SetInt("parentLevel", ParentRelationshipLevel);
-
+		//PlayerPrefs.SetInt("friendLevel", FriendRelationshipLevel);
+		//PlayerPrefs.SetInt("parentLevel", ParentRelationshipLevel);
+		PlayerPrefs.SetInt("relationshipLevel", RelationshipLevel);
+			
         PlayerPrefs.SetInt("upgrade1Level", Upgrade1Level);
         PlayerPrefs.SetInt("upgrade2Level", Upgrade2Level);
         PlayerPrefs.SetInt("upgrade3Level", Upgrade3Level);

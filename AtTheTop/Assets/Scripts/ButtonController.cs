@@ -41,7 +41,12 @@ public class ButtonController : MonoBehaviour {
         if (PlayerPrefs.GetInt("character") == 0) {
             ShowCanvas();
         } else {
-			StartCoroutine(IntroScene());
+			if (canvas.enabled) {
+				StartCoroutine(IntroScene());
+			} else {
+				LoadLevel(1);
+			}
+			
         }
     }
 
@@ -65,6 +70,5 @@ public class ButtonController : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(1);
 		LoadLevel(1);
-		
 	}
 }

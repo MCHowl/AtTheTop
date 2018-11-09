@@ -1012,6 +1012,8 @@ MonoBehaviour:
   EventUiText: {fileID: 448275705}
   ActionCancelledUi: {fileID: 1557665922}
   ActionCancelledUiText: {fileID: 443883606}
+  AcceptButton: {fileID: 1216665124}
+  DeclineButton: {fileID: 921155114}
   eventTriggeredSound: {fileID: 354742252}
 --- !u!114 &354742251
 MonoBehaviour:
@@ -1278,7 +1280,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0

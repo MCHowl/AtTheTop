@@ -12,7 +12,13 @@ public class EventList : MonoBehaviour {
     // Example: If an event gives the player -10 Energy, +50 Money,
     //          it should look like this ("eventname", long thing saying work/parent/friend,-10, 50)
 
-    public static void InitialiseWorkEventList() {
+	public static void InitialiseEventLists() {
+		InitialiseFriendEventList();
+		InitialiseParentEventList();
+		InitialiseWorkEventList();
+	}
+
+    static void InitialiseWorkEventList() {
         WorkEventList.Clear();
 
         WorkEventList.Add(new EventController.Event("You have a new report to finish by 9am. Work overtime to finish it?", EventController.Event.EventType.work, -5, 20));
@@ -38,7 +44,7 @@ public class EventList : MonoBehaviour {
     }
 
 
-    public static void InitialiseFriendEventList() {
+    static void InitialiseFriendEventList() {
         FriendEventList.Clear();
 
         FriendEventList.Add(new EventController.Event("Friend: Eh, I need to borrow some money, could you spot me $20?", EventController.Event.EventType.friend, 0, -20));
@@ -63,7 +69,7 @@ public class EventList : MonoBehaviour {
         FriendEventList.Add(new EventController.Event("Friend: Free to go on a staycation?", EventController.Event.EventType.friend, -15, -100));
     }
 
-    public static void InitialiseParentEventList() {
+    static void InitialiseParentEventList() {
         ParentEventList.Clear();
 
         ParentEventList.Add(new EventController.Event("Mum: Come and watch Wheel of Fortune with us! Very exciting!", EventController.Event.EventType.parent, -5, 0));
