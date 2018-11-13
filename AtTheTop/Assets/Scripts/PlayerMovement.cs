@@ -143,9 +143,9 @@ public class PlayerMovement : MonoBehaviour {
 		WorkSound.mute = false;
 	}
 
-	IEnumerator PlayWorkSound() {
+	private IEnumerator PlayWorkSound() {
 		WorkSound.UnPause();
-		yield return new WaitForSeconds(walkDelay);
+		yield return new WaitForSeconds(0.15f);
 		WorkSound.Pause();
 	}
 }

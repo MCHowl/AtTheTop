@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
         GameData.LoadPlayerData();
         EventList.InitialiseEventLists();
 		EventResponseList.InitialiseResponseLists();
+		GetComponent<RoomSpawner>().InitialiseRooms();
 
 		prevMoney = GameData.CurrentMoney;
 		prevEnergy = GameData.CurrentEnergy;

@@ -21,7 +21,7 @@ public class UpgradeController : MonoBehaviour {
     int Level1Cost, Level2Cost, Level3Cost;
 
 	private Image buttonImage;
-	private SpriteState Level2State, Level3State;
+	private SpriteState Level2State, Level3State, Level4State;
 	public Sprite Level2Image, Level2Disabled, Level2Triggered;
 	public Sprite Level3Image, Level3Disabled, Level3Triggered;
 
@@ -41,6 +41,11 @@ public class UpgradeController : MonoBehaviour {
 		Level3State = new SpriteState();
 		Level3State.disabledSprite = Level3Disabled;
 		Level3State.highlightedSprite = Level3Triggered;
+		Level3State.pressedSprite = Level3Image;
+
+		Level4State = new SpriteState();
+		Level3State.disabledSprite = Level3Image;
+		Level3State.highlightedSprite = Level3Image;
 		Level3State.pressedSprite = Level3Image;
 	}
 
@@ -78,7 +83,13 @@ public class UpgradeController : MonoBehaviour {
 				buttonImage.sprite = Level3Image;
 				button.spriteState = Level3State;
 				break;
-            default:
+			case (3):
+				buttonImage.sprite = Level3Image;
+				button.spriteState = Level3State;
+				button.interactable = false;
+				costText.text = "";
+				break;
+			default:
                 button.interactable = false;
                 costText.text = "";
                 break;

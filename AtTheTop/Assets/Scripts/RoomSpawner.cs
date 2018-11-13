@@ -16,13 +16,12 @@ public class RoomSpawner : MonoBehaviour {
 
     Transform roomHolder;
 
-    void Start() {
-        roomHolder = new GameObject("Rooms").transform;
+	public void InitialiseRooms() {
+		roomHolder = new GameObject("Rooms").transform;
+		currentSpawnPosition = new Vector3(0, 0, 0);
 
-        currentSpawnPosition = new Vector3(0, 0, 0);
-
-        SpawnAllRooms();
-    }
+		SpawnAllRooms();
+	}
 
     void SpawnAllRooms() {
         currentSpawnPosition.x = -roomLength;
